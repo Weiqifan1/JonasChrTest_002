@@ -7,6 +7,12 @@ librivox api:
 https://librivox.org/api/info
 
 
+#NEWS
+2019-04-14
+https://developer.android.com/distribute/best-practices/develop/target-sdk
+Vi kan ikke uploade aps der targetter Api'er under 28 i fremtiden. Men goer vi det, kan jeg ikke bruge min tablet 
+til at debugge, da den kun kan klare api 22 og mindre. :(
+Jeg regner med at vi maa lave en ny app, hvis vi vil laegge appen paa app store.
 
 2019-04-08:
 Christian: forsøger at lave 003 og 004.

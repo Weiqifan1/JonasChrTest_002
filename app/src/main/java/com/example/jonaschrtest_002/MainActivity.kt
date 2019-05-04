@@ -25,6 +25,10 @@ class MainActivity : Activity() {
             startActivity(Intent(this, PlaySound::class.java))
         }
 
+        actmain_todiskbooks.setOnClickListener{
+            startActivity(Intent(this, DiskBooks::class.java))
+        }
+
 
 
     }

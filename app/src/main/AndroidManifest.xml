@@ -26,6 +26,10 @@
                 android:name=".PlaySound">
         </activity>
 
+        <activity
+                android:name=".DiskBooks">
+        </activity>
+
     </application>
 
 </manifest>

@@ -55,6 +55,17 @@ data class PossibleAnswers (
 
 
 data class User (
-    val name: String,
-    val address: String
+    val aPath: String,
+    val aName: String,
+    val aAlbum:String,
+    val aArtist: String
 )
+
+/*
+data class AudioModels(
+    val aPath: String,
+    val aName: String,
+    val aAlbum:String,
+    val aArtist: String
+)
+*/

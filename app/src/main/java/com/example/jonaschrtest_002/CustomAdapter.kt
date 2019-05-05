@@ -16,8 +16,10 @@ class CustomAdapter(val userList: ArrayList<User>):
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         val user: User = userList[p1]
-        p0.textViewName.text = user.name
-        p0.textViewAddress.text = user.address
+        p0.textViewName.text = user.aPath
+        p0.textViewAddress.text = user.aName
+        p0.textViewAddress2.text = user.aAlbum
+        p0.textViewAddress3.text = user.aArtist
     }
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int):
@@ -32,6 +34,8 @@ class CustomAdapter(val userList: ArrayList<User>):
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val textViewName = itemView.findViewById(R.id.textViewName) as TextView
         val textViewAddress = itemView.findViewById(R.id.textViewAddress) as TextView
+        val textViewAddress2 = itemView.findViewById(R.id.textViewAddress2) as TextView
+        val textViewAddress3 = itemView.findViewById(R.id.textViewAddress3) as TextView
     }
 
 

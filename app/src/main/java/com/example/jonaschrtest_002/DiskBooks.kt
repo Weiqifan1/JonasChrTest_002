@@ -57,7 +57,7 @@ class DiskBooks: AppCompatActivity() {
                 )
 
 
-                //Log.e("Name :$name", " Album :$album")
+                //Log.e("Name :$aPath", " Album :$album")
                 //Log.e("Path :$path", " Artist :$artist")
 
                 tempAudioList.add(audioModel)

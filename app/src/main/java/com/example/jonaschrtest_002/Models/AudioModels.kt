@@ -1,6 +1,6 @@
 package com.example.jonaschrtest_002.Models
 
-data class AudioModel(
+data class AudioModels(
     val aPath: String,
     val aName: String,
     val aAlbum:String,

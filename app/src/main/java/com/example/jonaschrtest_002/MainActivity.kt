@@ -1,15 +1,10 @@
 package com.example.jonaschrtest_002
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu
-import android.view.MenuItem
 
 import android.app.Activity
 import android.content.Intent
 import android.media.MediaPlayer
-import android.view.MotionEvent
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,7 +25,7 @@ class MainActivity : Activity() {
         }
 
         actmain_recycle.setOnClickListener{
-            startActivity(Intent(this, RecycleBooks::class.java))
+            startActivity(Intent(this, India::class.java))
         }
 
     }

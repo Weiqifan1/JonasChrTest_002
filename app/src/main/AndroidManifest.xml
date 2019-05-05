@@ -31,7 +31,7 @@
                 android:name=".DiskBooks">
         </activity>
         <activity
-                android:name=".RecycleBooks">
+                android:name=".India">
         </activity>
 
     </application>

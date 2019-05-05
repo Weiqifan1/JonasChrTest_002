@@ -27,7 +27,7 @@ class India : AppCompatActivity() {
         users.add(User("Belal Khan", "Ranchi, India", "", ""))
 
         val audioInfoList : ArrayList<AudioModels> = getAllAudioFromDevice(this)
-        val adapter = CustomAdapter(audioInfoList)
+        val adapter = CustomAdapter(audioInfoList, this)
         recyclerView.adapter = adapter
 
     }

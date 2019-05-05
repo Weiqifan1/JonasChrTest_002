@@ -1,14 +1,15 @@
 package com.example.jonaschrtest_002
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import com.example.jonaschrtest_002.Models.AudioModels
-import com.example.jonaschrtest_002.Models.User
 
-class CustomAdapter(val userList: ArrayList<AudioModels>):
+class CustomAdapter(val userList: ArrayList<AudioModels>, private val context: Context):
     RecyclerView.Adapter<CustomAdapter.ViewHolder>(){
 
     override fun getItemCount(): Int {
@@ -21,7 +22,17 @@ class CustomAdapter(val userList: ArrayList<AudioModels>):
         p0.textViewAddress.text = user.aAlbum
         p0.textViewAddress2.text = user.aArtist
         p0.textViewAddress3.text = user.aPath
+
+        // test: https://www.youtube.com/watch?v=k6GSQRnDGog
+        val audio_click_me = p0.textViewName
+        audio_click_me.setOnClickListener {
+            // your code to run when the user clicks on the TextView
+            Toast.makeText(context, user.aPath, Toast.LENGTH_SHORT).show()
+        }
+
     }
+
+
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int):
             ViewHolder {

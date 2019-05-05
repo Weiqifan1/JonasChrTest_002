@@ -29,7 +29,9 @@ class MainActivity : Activity() {
             startActivity(Intent(this, DiskBooks::class.java))
         }
 
-
+        actmain_recycle.setOnClickListener{
+            startActivity(Intent(this, RecycleBooks::class.java))
+        }
 
     }
 

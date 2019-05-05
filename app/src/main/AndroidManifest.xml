@@ -30,6 +30,9 @@
         <activity
                 android:name=".DiskBooks">
         </activity>
+        <activity
+                android:name=".RecycleBooks">
+        </activity>
 
     </application>
 

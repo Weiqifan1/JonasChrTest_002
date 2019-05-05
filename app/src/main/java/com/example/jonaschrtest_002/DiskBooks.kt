@@ -1,19 +1,10 @@
 package com.example.jonaschrtest_002
 
-import android.database.Cursor
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.provider.MediaStore
-import android.util.Log
 import kotlinx.android.synthetic.main.activity_diskbooks.*
-import android.provider.MediaStore.Images.Media.getBitmap
-import android.R.attr.path
-import android.media.MediaMetadataRetriever
-import android.R.attr.duration
 import android.content.Context
-import java.nio.file.Files.exists
-import com.example.jonaschrtest_002.Models.AudioModel.*
 import com.example.jonaschrtest_002.Models.AudioModel
 
 
@@ -57,12 +48,12 @@ class DiskBooks: AppCompatActivity() {
         )
 
         if (c != null) {
-            while (c!!.moveToNext()) {
+            while (c.moveToNext()) {
                 val audioModel = AudioModel(
-                    c!!.getString(0),
-                    c!!.getString(1),
-                    c!!.getString(2),
-                    c!!.getString(3)
+                    c.getString(0),
+                    c.getString(1),
+                    c.getString(2),
+                    c.getString(3)
                 )
 
 
@@ -71,7 +62,7 @@ class DiskBooks: AppCompatActivity() {
 
                 tempAudioList.add(audioModel)
             }
-            c!!.close()
+            c.close()
         }
 
         return tempAudioList

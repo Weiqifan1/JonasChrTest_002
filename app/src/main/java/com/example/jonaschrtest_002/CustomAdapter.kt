@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.jonaschrtest_002.Models.AudioModels
 import com.example.jonaschrtest_002.Models.User
 
-class CustomAdapter(val userList: ArrayList<User>):
+class CustomAdapter(val userList: ArrayList<AudioModels>):
     RecyclerView.Adapter<CustomAdapter.ViewHolder>(){
 
     override fun getItemCount(): Int {
@@ -15,11 +16,11 @@ class CustomAdapter(val userList: ArrayList<User>):
     }
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        val user: User = userList[p1]
-        p0.textViewName.text = user.aPath
-        p0.textViewAddress.text = user.aName
-        p0.textViewAddress2.text = user.aAlbum
-        p0.textViewAddress3.text = user.aArtist
+        val user: AudioModels = userList[p1]
+        p0.textViewName.text = user.aName
+        p0.textViewAddress.text = user.aAlbum
+        p0.textViewAddress2.text = user.aArtist
+        p0.textViewAddress3.text = user.aPath
     }
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int):

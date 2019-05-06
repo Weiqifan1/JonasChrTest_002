@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView
 import android.widget.LinearLayout
 import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter
 import com.example.jonaschrtest_002.Models.AudioModels
-import com.example.jonaschrtest_002.Models.User
 
 class AudioFileList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

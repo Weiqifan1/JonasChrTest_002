@@ -31,7 +31,7 @@
                 android:name=".DiskBooks">
         </activity>
         <activity
-                android:name=".India">
+                android:name=".AudioFileList">
         </activity>
 
     </application>

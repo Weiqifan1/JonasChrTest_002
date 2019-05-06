@@ -7,10 +7,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.LinearLayout
+import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter
 import com.example.jonaschrtest_002.Models.AudioModels
 import com.example.jonaschrtest_002.Models.User
 
-class India : AppCompatActivity() {
+class AudioFileList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_india)
@@ -18,16 +19,8 @@ class India : AppCompatActivity() {
         val recyclerView = findViewById(R.id.recyclerView) as RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
-
-        val users = ArrayList<User>()
-        users.add(User("Belal Khan", "Ranchi, India", "", ""))
-        users.add(User("Belal Khan", "Ranchi, India", "", ""))
-        users.add(User("Belal Khan", "Ranchi, India", "", ""))
-        users.add(User("Belal Khan", "Ranchi, India", "", ""))
-        users.add(User("Belal Khan", "Ranchi, India", "", ""))
-
         val audioInfoList : ArrayList<AudioModels> = getAllAudioFromDevice(this)
-        val adapter = CustomAdapter(audioInfoList, this)
+        val adapter = AudioFileListAdapter(audioInfoList, this)
         recyclerView.adapter = adapter
 
     }

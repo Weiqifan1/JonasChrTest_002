@@ -19,14 +19,14 @@ class MainActivity : Activity() {
         actmain_playsoundBtn.setOnClickListener{
             startActivity(Intent(this, PlaySound::class.java))
         }
-
         actmain_todiskbooks.setOnClickListener{
             startActivity(Intent(this, DiskBooks::class.java))
         }
-
         actmain_recycle.setOnClickListener{
             startActivity(Intent(this, AudioFileList::class.java))
         }
+
+
 
     }
 

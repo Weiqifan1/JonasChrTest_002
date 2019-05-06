@@ -58,5 +58,19 @@
                 android:text="Stop"
                 android:enabled="false"
         />
+        <Button
+                android:id="@+id/button_fast_backward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-5sec"
+                android:enabled="false"
+        />
+        <Button
+                android:id="@+id/button_fast_forward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+5sec"
+                android:enabled="false"
+        />
     </LinearLayout>
 </LinearLayout>

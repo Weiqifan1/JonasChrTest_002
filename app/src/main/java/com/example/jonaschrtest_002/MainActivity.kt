@@ -19,37 +19,66 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        var startPlayer = true
         // Start the media player
-        button_play.setOnClickListener{
-            player = MediaPlayer.create(applicationContext,R.raw.flute)
+        button_play.setOnClickListener {
 
-            player.start()
-            tv_duration.text = "${player.seconds} sec"
-            initializeSeekBar()
+            if (startPlayer == true){
+                player = MediaPlayer.create(applicationContext, R.raw.flute)
+                player.start()
+                tv_duration.text = "${player.seconds} sec"
+                initializeSeekBar()
+                startPlayer=false
+                it.isEnabled = false
+                button_stop.isEnabled = true
+                button_fast_forward.isEnabled = true
+                button_fast_backward.isEnabled = true
 
-            it.isEnabled = false
-            button_stop.isEnabled = true
 
-            player.setOnCompletionListener {
-                button_stop.isEnabled = false
-                button_play.isEnabled = true
-                toast("end")
+            }else{
+                player.start()
+                button_stop.isEnabled = true
+
+
             }
+
+
         }
+
+
 
 
         // Stop the media player
         button_stop.setOnClickListener{
             if(player.isPlaying){
-                player.stop()
-                player.reset()
-                player.release()
-                handler.removeCallbacks(runnable)
+                player.pause()
 
                 it.isEnabled = false
                 button_play.isEnabled = true
             }
+        }
+
+        // +5 sec
+        button_fast_forward.setOnClickListener{
+                val currentSec = player.currentSeconds +5
+
+                player.seekTo(currentSec * 1000)
+
+        }
+        // -5 sec
+        button_fast_backward.setOnClickListener {
+
+
+            val currentSec = player.currentSeconds - 5
+
+                if (player.currentSeconds <=5){
+                    player.seekTo(0 * 1000)
+                }else {
+                    player.seekTo(currentSec * 1000)
+                }
+
+
+
         }
 
 

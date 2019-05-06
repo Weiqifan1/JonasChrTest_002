@@ -33,6 +33,9 @@
         <activity
                 android:name=".AudioFileList">
         </activity>
+        <activity
+                android:name=".Librivox">
+        </activity>
 
     </application>
 

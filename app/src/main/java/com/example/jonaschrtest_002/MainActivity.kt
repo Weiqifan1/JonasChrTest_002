@@ -26,6 +26,10 @@ class MainActivity : Activity() {
             startActivity(Intent(this, AudioFileList::class.java))
         }
 
+        actmain_librivox.setOnClickListener{
+            startActivity(Intent(this, Librivox::class.java))
+        }
+
 
 
     }

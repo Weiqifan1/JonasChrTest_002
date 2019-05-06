@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.provider.MediaStore
 import kotlinx.android.synthetic.main.activity_diskbooks.*
 import android.content.Context
-import com.example.jonaschrtest_002.Models.AudioModels
+import com.example.jonaschrtest_002.Models.Audio
 
 
 
@@ -29,8 +29,8 @@ class DiskBooks: AppCompatActivity() {
 
     //2019-05-04 kl. 19.56
     //https://riptutorial.com/android/example/23916/fetch-audio-mp3-files-from-specific-folder-of-device-or-fetch-all-files
-    fun getAllAudioFromDevice(context: Context): ArrayList<AudioModels> {
-        val tempAudioList = ArrayList<AudioModels>()
+    fun getAllAudioFromDevice(context: Context): ArrayList<Audio> {
+        val tempAudioList = ArrayList<Audio>()
 
         val uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
         val projection = arrayOf(
@@ -49,7 +49,7 @@ class DiskBooks: AppCompatActivity() {
 
         if (c != null) {
             while (c.moveToNext()) {
-                val audioModel = AudioModels(
+                val audioModel = Audio(
                     c.getString(0),
                     c.getString(1),
                     c.getString(2),

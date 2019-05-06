@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import com.example.jonaschrtest_002.Models.AudioModels
+import com.example.jonaschrtest_002.Models.Audio
 import com.example.jonaschrtest_002.R
 
-class AudioFileListAdapter(val userList: ArrayList<AudioModels>, private val context: Context):
+class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: Context):
     RecyclerView.Adapter<AudioFileListAdapter.ViewHolder>(){
 
     override fun getItemCount(): Int {
@@ -18,7 +18,7 @@ class AudioFileListAdapter(val userList: ArrayList<AudioModels>, private val con
     }
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        val user: AudioModels = userList[p1]
+        val user: Audio = userList[p1]
         p0.textViewName.text = user.aName
         p0.textViewAddress.text = user.aAlbum
         p0.textViewAddress2.text = user.aArtist

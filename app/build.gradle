@@ -21,6 +21,13 @@ android {
         }
     }
 }
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    implementation 'com.github.sembozdemir:PermissionsKt:1.0.0'
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

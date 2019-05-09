@@ -13,6 +13,8 @@ import com.example.jonaschrtest_002.Models.Audio
 class AudioFileList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         setContentView(R.layout.activity_audiofilelist)
 
         val recyclerView = findViewById(R.id.recyclerView) as RecyclerView

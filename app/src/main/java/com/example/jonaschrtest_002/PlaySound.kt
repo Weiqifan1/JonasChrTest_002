@@ -26,7 +26,6 @@ class PlaySound : AppCompatActivity(){
         var startPlayer = true
         // Start the media player
         button_play.setOnClickListener {
-
             if (startPlayer == true){
                 player = MediaPlayer.create(applicationContext, R.raw.explosion)
                 player.start()
@@ -37,21 +36,11 @@ class PlaySound : AppCompatActivity(){
                 button_stop.isEnabled = true
                 button_fast_forward.isEnabled = true
                 button_fast_backward.isEnabled = true
-
-
             }else{
                 player.start()
                 button_stop.isEnabled = true
-
-
             }
-
-
         }
-
-
-
-
         // Stop the media player
         button_stop.setOnClickListener{
             if(player.isPlaying){

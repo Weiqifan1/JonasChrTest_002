@@ -33,7 +33,7 @@ class PlaySound : AppCompatActivity(){
         val intent = getIntent();
         var myValue = intent.getStringExtra("valor")
         val myValueName = intent.getStringExtra("valorName")
-        
+
         // Start the media player
         button_play.setOnClickListener {
             if (startPlayer == true){
@@ -45,6 +45,8 @@ class PlaySound : AppCompatActivity(){
                     try { prepare() } catch (e: IllegalStateException) { null}
                     start()
                 }
+                song_title.text = myValueName
+
 
                 tv_duration.text = "${player.seconds} sec"
                 initializeSeekBar()

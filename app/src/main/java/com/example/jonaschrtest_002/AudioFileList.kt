@@ -6,7 +6,9 @@ import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter
 import com.example.jonaschrtest_002.Models.Audio
 
@@ -23,6 +25,10 @@ class AudioFileList : AppCompatActivity() {
         val audioInfoList : ArrayList<Audio> = getAllAudioFromDevice(this)
         val adapter = AudioFileListAdapter(audioInfoList, this)
         recyclerView.adapter = adapter
+
+
+
+
 
     }
 
@@ -66,7 +72,13 @@ class AudioFileList : AppCompatActivity() {
             c.close()
         }
 
+
         return tempAudioList
+
     }
 
+
+
 }
+
+

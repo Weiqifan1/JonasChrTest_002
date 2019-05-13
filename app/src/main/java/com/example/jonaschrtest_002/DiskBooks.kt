@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.provider.MediaStore
 import kotlinx.android.synthetic.main.activity_diskbooks.*
 import android.content.Context
+import android.widget.Toast
 import com.example.jonaschrtest_002.Models.Audio
 
 
@@ -23,7 +24,10 @@ class DiskBooks: AppCompatActivity() {
 
 
 
-    }
+
+
+
+        }
 
 
 
@@ -67,6 +71,8 @@ class DiskBooks: AppCompatActivity() {
 
         return tempAudioList
     }
+
+
 
 
 }

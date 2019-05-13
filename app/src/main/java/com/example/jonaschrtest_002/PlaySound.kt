@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_playsound.*
 import android.view.MotionEvent
 import android.content.Context
+import android.content.res.AssetFileDescriptor
+import android.net.Uri
+import android.os.Environment
 import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Handler
 import android.widget.SeekBar
@@ -24,10 +27,27 @@ class PlaySound : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_playsound)
         var startPlayer = true
+
+       // val user = intent.getStringExtra("valor")
+        val intent = getIntent();
+        val myValue = intent.getStringExtra("valor")
+        val myValueName = intent.getStringExtra("valorName")
+
+
+
+
+        toast(myValue)
+        toast(myValueName)
         // Start the media player
         button_play.setOnClickListener {
             if (startPlayer == true){
-                player = MediaPlayer.create(applicationContext, R.raw.explosion)
+
+
+
+                val data = Uri.parse ("file:"+myValue)
+                val player = MediaPlayer.create (this, data)
+
+                player.prepare()
                 player.start()
                 tv_duration.text = "${player.seconds} sec"
                 initializeSeekBar()

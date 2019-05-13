@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_playsound.*
 import android.view.MotionEvent
 import android.content.Context
 import android.content.res.AssetFileDescriptor
+import android.media.AudioManager
 import android.net.Uri
 import android.os.Environment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,25 +31,21 @@ class PlaySound : AppCompatActivity(){
 
        // val user = intent.getStringExtra("valor")
         val intent = getIntent();
-        val myValue = intent.getStringExtra("valor")
+        var myValue = intent.getStringExtra("valor")
         val myValueName = intent.getStringExtra("valorName")
-
-
-
-
-        toast(myValue)
-        toast(myValueName)
+        
         // Start the media player
         button_play.setOnClickListener {
             if (startPlayer == true){
 
+                val data = Uri.parse (myValue)
 
+                 player = MediaPlayer().apply {
+                    setDataSource(applicationContext, data)
+                    try { prepare() } catch (e: IllegalStateException) { null}
+                    start()
+                }
 
-                val data = Uri.parse ("file:"+myValue)
-                val player = MediaPlayer.create (this, data)
-
-                player.prepare()
-                player.start()
                 tv_duration.text = "${player.seconds} sec"
                 initializeSeekBar()
                 startPlayer=false

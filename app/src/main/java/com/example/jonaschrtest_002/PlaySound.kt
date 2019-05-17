@@ -34,21 +34,21 @@ class PlaySound : AppCompatActivity(){
         var myValue = intent.getStringExtra("valor")
         val myValueName = intent.getStringExtra("valorName")
 
+        val data = Uri.parse (myValue)
+
+        player = MediaPlayer().apply {
+            setDataSource(applicationContext, data)
+            try { prepare() } catch (e: IllegalStateException) { null}
+        }
+        song_title.text = myValueName
+        tv_duration.text = "${player.seconds} sec"
+
         // Start the media player
         button_play.setOnClickListener {
             if (startPlayer == true){
 
-                val data = Uri.parse (myValue)
 
-                 player = MediaPlayer().apply {
-                    setDataSource(applicationContext, data)
-                    try { prepare() } catch (e: IllegalStateException) { null}
-                    start()
-                }
-                song_title.text = myValueName
-
-
-                tv_duration.text = "${player.seconds} sec"
+                player.start()
                 initializeSeekBar()
                 startPlayer=false
                 it.isEnabled = false

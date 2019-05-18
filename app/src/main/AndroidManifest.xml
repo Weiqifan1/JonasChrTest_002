@@ -35,6 +35,10 @@
                 android:name=".AudioFileList">
         </activity>
 
+        <activity
+                android:name=".DBtest">
+        </activity>
+
     </application>
 
 </manifest>

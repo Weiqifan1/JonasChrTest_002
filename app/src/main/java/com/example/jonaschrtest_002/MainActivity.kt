@@ -26,7 +26,6 @@ class MainActivity : Activity() {
         setContentView(R.layout.activity_main)
 
 
-
         actmain_playsoundBtn.setOnClickListener {
             startActivity(Intent(this, PlaySound::class.java))
         }
@@ -35,6 +34,10 @@ class MainActivity : Activity() {
         }
         actmain_recycle.setOnClickListener {
             startActivity(Intent(this, AudioFileList::class.java))
+        }
+
+        actmain_dbtest.setOnClickListener{
+            startActivity(Intent(this, DBtest::class.java))
         }
 
 //https://en.proft.me/2017/06/14/runtime-permissions-android-marshmallow-60-and-abo/

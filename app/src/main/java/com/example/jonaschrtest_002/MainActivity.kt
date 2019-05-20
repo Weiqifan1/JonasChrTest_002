@@ -37,6 +37,10 @@ class MainActivity : Activity() {
             startActivity(Intent(this, AudioFileList::class.java))
         }
 
+        actmain_dbhelp.setOnClickListener{
+            startActivity(Intent(this, Dbhelp::class.java))
+        }
+
 //https://en.proft.me/2017/06/14/runtime-permissions-android-marshmallow-60-and-abo/
         askPermissions(wantedPerm) {
             onGranted {

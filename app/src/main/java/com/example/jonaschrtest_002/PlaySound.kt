@@ -119,6 +119,8 @@ class PlaySound : AppCompatActivity(){
     override fun onBackPressed()  {
         if (player.isPlaying()) {
             player.stop();
+        }else{
+            player.release();
         }
         super.onBackPressed();
        

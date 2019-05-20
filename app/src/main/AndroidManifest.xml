@@ -37,6 +37,11 @@
                 android:configChanges="orientation|screenSize">
         </activity>
 
+        <activity
+                android:name=".Dbhelp">
+        </activity>
+
+
     </application>
 
 </manifest>

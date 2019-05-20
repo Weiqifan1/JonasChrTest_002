@@ -51,13 +51,16 @@ class PlaySound : AppCompatActivity(){
                 tv_duration.text = "${player.seconds} sec"
                 initializeSeekBar()
                 startPlayer=false
+
                 it.isEnabled = false
                 button_stop.isEnabled = true
                 button_fast_forward.isEnabled = true
                 button_fast_backward.isEnabled = true
+                button_play.isEnabled = true
             }else{
                 player.start()
                 button_stop.isEnabled = true
+                button_play.isEnabled = true
             }
         }
         // Stop the media player
@@ -69,6 +72,9 @@ class PlaySound : AppCompatActivity(){
                 button_play.isEnabled = true
             }
         }
+
+
+
 
         // +5 sec
         button_fast_forward.setOnClickListener{
@@ -108,6 +114,14 @@ class PlaySound : AppCompatActivity(){
             override fun onStopTrackingTouch(seekBar: SeekBar) {
             }
         })
+    }
+
+    override fun onBackPressed()  {
+        if (player.isPlaying()) {
+            player.stop();
+        }
+        super.onBackPressed();
+       
     }
 
 

@@ -25,14 +25,16 @@
         </activity>
 
         <activity
-                android:name=".PlaySound">
+                android:name=".PlaySound"
+                android:configChanges="orientation|screenSize">
         </activity>
 
         <activity
                 android:name=".DiskBooks">
         </activity>
         <activity
-                android:name=".AudioFileList">
+                android:name=".AudioFileList"
+                android:configChanges="orientation|screenSize">
         </activity>
 
     </application>

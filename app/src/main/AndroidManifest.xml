@@ -33,6 +33,9 @@
                 android:name=".DiskBooks">
         </activity>
         <activity
+                android:name=".Dbsqlite">
+        </activity>
+        <activity
                 android:name=".AudioFileList"
                 android:configChanges="orientation|screenSize">
         </activity>

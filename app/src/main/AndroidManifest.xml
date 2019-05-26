@@ -33,7 +33,7 @@
                 android:name=".DiskBooks">
         </activity>
         <activity
-                android:name=".Dbsqlite">
+                android:name=".Database.DatabaseActivity">
         </activity>
         <activity
                 android:name=".AudioFileList"

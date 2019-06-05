@@ -33,32 +33,62 @@
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.058"/>
 
-    <Button
-            android:text="actmain_todiskbooks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/actmain_todiskbooks" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/actmain_playsoundBtn" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.051"
-            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"/>
+
     <Button
             android:text="actmain_recycle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/actmain_recycle" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/actmain_todiskbooks" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.078"
+            android:id="@+id/actmain_recycle"
+
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"/>
+            app:layout_constraintHorizontal_bias="0.464" android:layout_marginBottom="468dp"/>
+
+
     <Button
-            android:text="actmain_dbhelp"
+            android:text="Simple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/actmain_dbhelp"
-            app:layout_constraintStart_toStartOf="@+id/actmain_recycle" android:layout_marginTop="39dp"
-            android:layout_marginStart="34dp"
-            app:layout_constraintTop_toBottomOf="@+id/actmain_recycle"/>
+            android:id="@+id/simple_list_button" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/adapter_list_button"
+            android:layout_marginTop="328dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView"/>
+    <Button
+            android:text="Adapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/adapter_list_button"
+            app:layout_constraintStart_toEndOf="@+id/simple_list_button" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/recycle_view_button"
+            app:layout_constraintTop_toTopOf="@+id/simple_list_button"/>
+    <Button
+            android:text="Recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycle_view_button" app:layout_constraintStart_toEndOf="@+id/adapter_list_button"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/adapter_list_button"/>
+    <Button
+            android:text="Database"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler_db_button"
+            app:layout_constraintStart_toEndOf="@+id/rest_button"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rest_button"/>
+    <Button
+            android:text="Rest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rest_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/recycler_db_button"
+            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/simple_list_button"/>
+
+
+
+
+    />
 </android.support.constraint.ConstraintLayout>
 

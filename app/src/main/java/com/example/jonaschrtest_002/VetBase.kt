@@ -2,10 +2,7 @@ package com.example.jonaschrtest_002
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import com.example.jonaschrtest_002.App
-import com.example.jonaschrtest_002.Cat
-import com.example.jonaschrtest_002.Dog
-import com.example.jonaschrtest_002.Pet
+
 import org.jetbrains.anko.db.*
 import java.lang.IllegalArgumentException
 

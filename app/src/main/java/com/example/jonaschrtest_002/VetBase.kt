@@ -1,64 +1,11 @@
-package com.example.jonaschrtest_002.Database
-
+package com.example.jonaschrtest_002
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import com.example.jonaschrtest_002.App
-import org.jetbrains.anko.db.*
-import java.lang.IllegalArgumentException
-
-class BookmarkBaseOpenHelper(context: Context = App.instance) :
-    ManagedSQLiteOpenHelper(context, "BookmarkBase", null, 1) {
-    companion object {
-        val instance by lazy {
-            BookmarkBaseOpenHelper()
-        }
-    }
-
-
-    override fun onCreate(db: SQLiteDatabase) {
-        // Here you create tables
-        db.createTable(
-            Bookmark.TABLE_NAME, true,
-
-            Bookmark.ID to INTEGER + PRIMARY_KEY + UNIQUE,
-            Bookmark.MOTHER_FILE_PATH to TEXT,
-            Bookmark.TEXT to TEXT,
-            Bookmark.TIME_CREATED to INTEGER,
-            Bookmark.TIME_IN_FILE to INTEGER
-        )
-    }
-
-
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // Here you can upgrade tables, as usual
-        db.dropTable(Bookmark.TABLE_NAME, true)
-        onCreate(db)
-    }
-
-
-    val Context.database: BookmarkBaseOpenHelper
-        get() = BookmarkBaseOpenHelper.instance
-
-    val bookmarkParser = { id: Int,
-                           time_in_file: Long,
-                           mother_file_path: String,
-                           time_created: Long,
-                           text: String ->
-        Bookmark(id, time_in_file, mother_file_path, time_created, text)
-
-    }
-
-}
-
-
-
-
-/*
-
-
-import android.content.Context
-import android.database.sqlite.SQLiteDatabase
+import com.example.jonaschrtest_002.Cat
+import com.example.jonaschrtest_002.Dog
+import com.example.jonaschrtest_002.Pet
 import org.jetbrains.anko.db.*
 import java.lang.IllegalArgumentException
 
@@ -80,7 +27,8 @@ class VetBaseOpenHelper(context: Context = App.instance) :
 
     override fun onCreate(db: SQLiteDatabase) {
         // Here you create tables
-        db.createTable(Pet.TABLE_NAME, true,
+        db.createTable(
+            Pet.TABLE_NAME, true,
             Pet.DTYPE to TEXT,
             Pet.ID to INTEGER + PRIMARY_KEY + UNIQUE,
             Pet.NAME to TEXT,
@@ -144,6 +92,3 @@ val petParser = rowParser {
         }
     }
 
-
-
-*/

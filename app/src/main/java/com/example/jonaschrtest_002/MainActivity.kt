@@ -31,14 +31,14 @@ class MainActivity : Activity() {
             startActivity(Intent(this, PlaySound::class.java))
         }
         actmain_todiskbooks.setOnClickListener {
-            startActivity(Intent(this, DiskBooks::class.java))
+            //startActivity(Intent(this, DiskBooks::class.java))
         }
         actmain_recycle.setOnClickListener {
             startActivity(Intent(this, AudioFileList::class.java))
         }
 
         actmain_dbhelp.setOnClickListener{
-            startActivity(Intent(this, Dbhelp::class.java))
+         //   startActivity(Intent(this, Dbhelp::class.java))
         }
 
 //https://en.proft.me/2017/06/14/runtime-permissions-android-marshmallow-60-and-abo/

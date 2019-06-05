@@ -1,23 +1,8 @@
 package com.example.jonaschrtest_002
 
-
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
-
-import org.jetbrains.anko.db.select
-import org.jetbrains.anko.db.update
-import org.jetbrains.anko.sdk27.coroutines.onClick
-
-class EditBookmark {
-}
-
-
-/*
-package dk.cphbusiness.vetapplication
-
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_edit_pet.*
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.db.update
@@ -51,4 +36,3 @@ class EditPetActivity : AppCompatActivity() {
             }
     }
 }
-*/

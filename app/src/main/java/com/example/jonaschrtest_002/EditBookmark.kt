@@ -3,7 +3,8 @@ package com.example.jonaschrtest_002
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_edit_bookmark.*
+
+
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.db.update
 import org.jetbrains.anko.sdk27.coroutines.onClick

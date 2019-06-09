@@ -10,12 +10,17 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter
+import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter.Utils.startNewActivity
 import com.example.jonaschrtest_002.Models.Audio
+import kotlinx.android.synthetic.main.activity_audiofilelist.*
+import org.jetbrains.anko.longToast
 
 class AudioFileList : AppCompatActivity() {
+
+    lateinit var chosenAudioFile: Audio
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         setContentView(R.layout.activity_audiofilelist)
 
@@ -26,13 +31,14 @@ class AudioFileList : AppCompatActivity() {
         val adapter = AudioFileListAdapter(audioInfoList, this)
         recyclerView.adapter = adapter
 
-
-
-
-
+        audiofilelist_playBtn.setOnClickListener{
+            startNewActivity(this, PlaySound::class.java,chosenAudioFile)
+        }
     }
 
-
+    fun setCurrentFileChosen(nameOfAudioFile: String){
+        audiofilelist_currentAudioFile.text = "Current Audio file: " + nameOfAudioFile
+    }
 
     //2019-05-04 kl. 19.56
     //https://riptutorial.com/android/example/23916/fetch-audio-mp3-files-from-specific-folder-of-device-or-fetch-all-files
@@ -72,13 +78,8 @@ class AudioFileList : AppCompatActivity() {
             c.close()
         }
 
-
         return tempAudioList
-
     }
-
-
-
 }
 
 

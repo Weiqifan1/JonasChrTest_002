@@ -8,31 +8,32 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".AudioFileList" android:orientation="vertical">
 
-<LinearLayout
+    <TextView
+            android:text="Current Audio file: "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/audiofilelist_currentAudioFile"/>
+    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" android:gravity="center_horizontal" android:layout_margin="10dp">
     <Button
-            android:text="add"
+            android:text="play"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/addButton" android:layout_weight="1"
+            android:layout_height="wrap_content" android:id="@+id/audiofilelist_playBtn" android:layout_weight="1"
             style="@style/Widget.AppCompat.Button.Borderless"/>
     <Button
-            android:text="delete"
+            android:text="edit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/deleteButton" android:layout_weight="1"
+            android:layout_height="wrap_content" android:id="@+id/audiofilelist_editBtn" android:layout_weight="1"
             style="@style/Widget.AppCompat.Button.Borderless"/>
-    <Button
-            android:text="find"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/findButton" android:layout_weight="1"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
+
 </LinearLayout>
-<android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recyclerView"
-        android:layout_margin="10dp"/>
+
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="645dp"
+            android:id="@+id/recyclerView"
+            android:layout_margin="10dp"/>
 </LinearLayout>
 
 <!--

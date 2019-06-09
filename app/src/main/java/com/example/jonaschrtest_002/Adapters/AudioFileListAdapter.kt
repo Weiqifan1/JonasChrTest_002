@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.example.jonaschrtest_002.AudioFileList
 import com.example.jonaschrtest_002.MainActivity
 import com.example.jonaschrtest_002.Models.Audio
 import com.example.jonaschrtest_002.PlaySound
@@ -37,19 +38,15 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
         val audio_click_me = p0.textViewName
         val audio_click_me2 = p0.textViewName
 
-
-
-
         audio_click_me.setOnClickListener {
-            // your code to run when the user clicks on the TextView
-
-            Utils.startNewActivity(context, PlaySound::class.java,user)
-
-            Toast.makeText(context, user.aName, Toast.LENGTH_SHORT).show()
-
-
+            //Utils.startNewActivity(context, PlaySound::class.java,user)
+            //Toast.makeText(context, user.aName, Toast.LENGTH_SHORT).show()
+            if (context is AudioFileList) {
+                //Toast.makeText(context, user.aName, Toast.LENGTH_SHORT).show()
+                (context as AudioFileList).chosenAudioFile = user
+                (context as AudioFileList).setCurrentFileChosen(user.aName)
+            }
         }
-
     }
 
 

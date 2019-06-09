@@ -31,7 +31,7 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-    
+
 
 
         simple_list_button.onClick { startActivity<SimpleActivity>() }

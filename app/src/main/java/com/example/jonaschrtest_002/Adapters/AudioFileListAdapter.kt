@@ -16,6 +16,7 @@ import com.example.jonaschrtest_002.Models.Audio
 import com.example.jonaschrtest_002.PlaySound
 import com.example.jonaschrtest_002.R
 import kotlinx.android.synthetic.main.activity_main.*
+import com.example.jonaschrtest_002.Adapters.AdioFileHelper
 
 
 class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: Context):
@@ -23,12 +24,36 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
 
 
     override fun getItemCount(): Int {
-        return userList.size
+        val listOfAudioList = getListOfSameFolders(userList)
+        return listOfAudioList.size
     }
 
+
+
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
+
+        //***********************************
+        //2019-06-10
+        val listOfAudioList = getListOfSameFolders(userList)
+        //***********************************
+
+        val eachFolder: ArrayList<Audio> = listOfAudioList[p1]
+        if (eachFolder.size > 0){
+            p0.textViewName.text = eachFolder[0].aAlbum
+            p0.textViewAddress.text = eachFolder[0].aName
+            p0.textViewAddress2.text = eachFolder[0].aArtist
+            p0.textViewAddress3.text = eachFolder[0].aPath
+        } else {
+            p0.textViewName.text = "blank"
+        }
+
+        val audio_click_me = p0.textViewName
+        
+
+        /*
         val mContext = p0.itemView.context
         val user: Audio = userList[p1]
+
         p0.textViewName.text = user.aName
         p0.textViewAddress.text = user.aAlbum
         p0.textViewAddress2.text = user.aArtist
@@ -47,8 +72,8 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
                 (context as AudioFileList).setCurrentFileChosen(user.aName)
             }
         }
+        */
     }
-
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int):
             ViewHolder {
@@ -80,4 +105,45 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
 
 
     }
+
+
+    fun getClosestFolderFromAudio(audioFile: Audio): String{
+        val filePath = audioFile.aPath
+        val reverse = filePath.reversed()
+        val regex = """([^/]+)/(.*)""".toRegex()
+        val matchResult = regex.find(reverse)
+        val (part1, part2) = matchResult!!.destructured
+        //part1.reversed() == MYFILe.mp3
+        //part2.reversed() == /storage/.../Doyle eg./storage/emulated/0/Books/Audiobooks/Doyle
+        return part2.reversed()
+    }
+
+    fun getAllAudioWithPath(audioList: ArrayList<Audio>, closestFolder: String)
+            :ArrayList<Audio>{
+        val resultList = ArrayList<Audio>()
+        for (item in audioList){
+            val closestFolderCheck = getClosestFolderFromAudio(item)
+            if (closestFolder == closestFolderCheck){
+                resultList.add(item)
+            }
+        }
+        return resultList
+    }
+
+
+    fun getListOfSameFolders(audioFileList: ArrayList<Audio>):
+            ArrayList<ArrayList<Audio>>{
+        val folders = ArrayList<String>()
+        val folderList = ArrayList<ArrayList<Audio>>()
+
+        for (item in audioFileList){
+            val closestFolder = getClosestFolderFromAudio(item)
+            if (closestFolder !in folders){
+                folders.add(closestFolder)
+                folderList.add(getAllAudioWithPath(audioFileList, closestFolder))
+            }
+        }
+        return folderList
+    }
+
 }

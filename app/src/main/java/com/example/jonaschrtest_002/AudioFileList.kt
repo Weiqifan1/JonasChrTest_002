@@ -43,6 +43,7 @@ class AudioFileList : AppCompatActivity() {
     //2019-05-04 kl. 19.56
     //https://riptutorial.com/android/example/23916/fetch-audio-mp3-files-from-specific-folder-of-device-or-fetch-all-files
     fun getAllAudioFromDevice(context: Context): ArrayList<Audio> {
+        lateinit var result: ArrayList<Audio>
         val tempAudioList = ArrayList<Audio>()
 
         val uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
@@ -80,13 +81,29 @@ class AudioFileList : AppCompatActivity() {
             c.close()
         }
 
-        return tempAudioList
+        if (tempAudioList.size > 0){
+            result = removeStoragePath(tempAudioList)
+            return result
+        } else {
+            return ArrayList<Audio>()
+        }
     }
 
     //2019-06-11
     // helper files:
 
 
+    fun removeStoragePath(listOfAudioFiles: ArrayList<Audio>):
+            ArrayList<Audio>{
+        val result = ArrayList<Audio>()
+        val storage: String = "/storage/emulated/0"
+        for (item in listOfAudioFiles) {
+            val topdirectory = item.aPath.subSequence(storage.length, item.aPath.length)
+            val newAudio = Audio(topdirectory.toString(), item.aName, item.aAlbum, item.aArtist, item.aFolderOrFile, null)
+            result.add(newAudio)
+        }
+        return result
+    }
 
 }
 

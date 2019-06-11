@@ -29,10 +29,10 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         val mContext = p0.itemView.context
         val user: Audio = userList[p1]
-        p0.textViewName.text = user.aName
+        p0.textViewName.text = user.aShortPath
         p0.textViewAddress.text = user.aAlbum
         p0.textViewAddress2.text = user.aArtist
-        p0.textViewAddress3.text = user.aShortPath
+        p0.textViewAddress3.text = user.aName
 
         // test: https://www.youtube.com/watch?v=k6GSQRnDGog
         val audio_click_me = p0.textViewName
@@ -44,7 +44,8 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
             if (context is AudioFileList) {
                 //Toast.makeText(context, user.aName, Toast.LENGTH_SHORT).show()
                 (context as AudioFileList).chosenAudioFile = user
-                (context as AudioFileList).setCurrentFileChosen(user.aName)
+                (context as AudioFileList).setCurrentFileChosen(user.aPath)
+
             }
         }
     }

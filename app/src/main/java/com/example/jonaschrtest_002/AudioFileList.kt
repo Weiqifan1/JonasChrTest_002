@@ -17,7 +17,7 @@ import org.jetbrains.anko.longToast
 
 class AudioFileList : AppCompatActivity() {
 
-    lateinit var chosenAudioFile: Audio
+    var chosenAudioFile: Audio = Audio("none Chosen", "none", "", "", "", ArrayList<Audio>(), "")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +28,24 @@ class AudioFileList : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
         val audioInfoList : ArrayList<Audio> = getAllAudioFromDevice(this)
-        val adapter = AudioFileListAdapter(audioInfoList, this)
+        //*********2019-06-11***************************************************************************
+        val gatherFolder = audioInfoList//gatherInTopSubFolders(audioInfoList)
+        //******************************************************************************************
+        val adapter = AudioFileListAdapter(gatherFolder, this)
         recyclerView.adapter = adapter
 
         audiofilelist_playBtn.setOnClickListener{
             startNewActivity(this, PlaySound::class.java,chosenAudioFile)
+            /*
+            if (pathIsAFile(chosenAudioFile)){
+                startNewActivity(this, PlaySound::class.java,chosenAudioFile)
+            }else {
+                val gatherFolder2 = gatherInTopSubFolders(chosenAudioFile.aAudList)
+                val adapter2 = AudioFileListAdapter(gatherFolder2, this)
+                recyclerView.adapter = adapter2
+            }
+            */
+
         }
     }
 
@@ -53,8 +66,7 @@ class AudioFileList : AppCompatActivity() {
             MediaStore.Audio.AudioColumns.ALBUM,
             MediaStore.Audio.ArtistColumns.ARTIST
         )
-        //val c = context.getContentResolver()
-        //    .query(uri, projection, MediaStore.Audio.Media.DATA + " like ? ", arrayOf("%utm%"), null)
+
         val c = context.getContentResolver().query(
             uri,
             projection,
@@ -69,7 +81,7 @@ class AudioFileList : AppCompatActivity() {
                     c.getString(2),
                     c.getString(3),
                     "File",
-                    null,
+                    ArrayList<Audio>(),
                     c.getString(0)
                 )
 
@@ -100,10 +112,92 @@ class AudioFileList : AppCompatActivity() {
         val storage: String = "/storage/emulated/0"
         for (item in listOfAudioFiles) {
             val topdirectory = item.aPath.subSequence(storage.length, item.aPath.length)
-            val newAudio = Audio(item.aPath, item.aName, item.aAlbum, item.aArtist, item.aFolderOrFile, null, topdirectory.toString())
+            val newAudio = Audio(item.aPath, item.aName, item.aAlbum, item.aArtist, item.aFolderOrFile, ArrayList<Audio>(), topdirectory.toString())
             result.add(newAudio)
         }
         return result
+    }
+
+
+    fun gatherInTopSubFolders(flatAudioList: ArrayList<Audio>):ArrayList<Audio>{
+        val newAudioList = ArrayList<Audio>()
+        val listOfTopFolders = ArrayList<String>()
+        for (item in flatAudioList){
+            if (pathIsAFile(item)) {
+                newAudioList.add(item)
+            }else {
+                val topFolder = getTopFolder(item)
+                if (topFolder !in listOfTopFolders){
+                    val allAudiosOfThatFolder = getAllAudioWithTopFolder(topFolder, flatAudioList)
+                    val folderObject = Audio(item.aPath, topFolder, "", "", "Folder", allAudiosOfThatFolder, removeTopFolder(item).aShortPath)
+                    newAudioList.add(folderObject)
+                    listOfTopFolders.add(topFolder)
+                }
+            }
+        }
+        return newAudioList
+    }
+
+
+    fun getAllAudioWithTopFolder(topFolder: String, audioList: ArrayList<Audio>): ArrayList<Audio>{
+        val result = ArrayList<Audio>()
+        for (item in audioList) {
+            if (!pathIsAFile(item)) {
+                val folder = getTopFolder(item)
+                if (topFolder == folder) {
+                    result.add(item)
+                }
+            }
+        }
+        return result
+    }
+
+
+    fun getAllFolders(audioList: ArrayList<Audio>): ArrayList<String>{
+        val result = ArrayList<String>()
+        for (item in audioList) {
+            if (pathIsAFile(item)) {
+                val topFolder = getTopFolder(item)
+                result.add(topFolder)
+            }
+        }
+        result.toSet()
+        val secondResult = ArrayList<String>()
+        for (item in result) {
+            secondResult.add(item)
+        }
+        return secondResult
+    }
+
+
+    fun getTopFolder(audioObject: Audio): String{
+        val shortpath = audioObject.aShortPath
+        val regex = """(/[^/]+)(/.*)""".toRegex()
+        val matchResult = regex.find(shortpath)
+        val (part1, part2) = matchResult!!.destructured
+        return part1//.subSequence(1, part1.length).toString()
+    }
+
+
+    fun removeTopFolder(audioObject: Audio): Audio{
+        //find our if 2 files have the same top directory:
+        val shortpath = audioObject.aShortPath
+        val regex = """(/[^/]+)(/.*)""".toRegex()
+        val matchResult = regex.find(shortpath)
+        val (part1, part2) = matchResult!!.destructured
+        //println(part1)
+        //println(part2)
+        val newaudioobject = Audio(audioObject.aPath, audioObject.aName,audioObject.aAlbum,audioObject.aArtist,audioObject.aFolderOrFile,audioObject.aAudList,part2)
+        return newaudioobject
+    }
+
+    fun pathIsAFile(audioObject: Audio): Boolean{
+        val shortpath: String = audioObject.aShortPath
+        if ("/" !in shortpath.subSequence(1,shortpath.length)){
+            return true
+        }else{
+            return false
+        }
     }
 
 }

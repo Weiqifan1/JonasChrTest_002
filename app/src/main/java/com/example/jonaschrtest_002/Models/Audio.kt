@@ -6,6 +6,6 @@ data class Audio(
     val aAlbum:String?,
     val aArtist: String?,
     val aFolderOrFile: String,
-    var aAudList: ArrayList<Audio>?,
+    var aAudList: ArrayList<Audio>,
     val aShortPath: String
 )

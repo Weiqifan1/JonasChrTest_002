@@ -57,12 +57,22 @@ class DiskBooks: AppCompatActivity() {
                     c.getString(0),
                     c.getString(1),
                     c.getString(2),
-                    c.getString(3)
+                    c.getString(3),
+                    "File",
+                    null
                 )
 
+                /*
 
-                //Log.e("Name :$aPath", " Album :$album")
-                //Log.e("Path :$path", " Artist :$artist")
+                data class Audio(
+                    val aPath: String,
+                    val aName: String?,
+                    val aAlbum:String?,
+                    val aArtist: String?,
+                    val aFolderOrFile: String,
+                    var aAudList: ArrayList<Audio>?
+                )
+                 */
 
                 tempAudioList.add(audioModel)
             }

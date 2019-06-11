@@ -36,7 +36,7 @@ class AudioFileList : AppCompatActivity() {
         }
     }
 
-    fun setCurrentFileChosen(nameOfAudioFile: String){
+    fun setCurrentFileChosen(nameOfAudioFile: String?){
         audiofilelist_currentAudioFile.text = "Current Audio file: " + nameOfAudioFile
     }
 
@@ -66,7 +66,9 @@ class AudioFileList : AppCompatActivity() {
                     c.getString(0),
                     c.getString(1),
                     c.getString(2),
-                    c.getString(3)
+                    c.getString(3),
+                    "File",
+                    null
                 )
 
 
@@ -80,6 +82,12 @@ class AudioFileList : AppCompatActivity() {
 
         return tempAudioList
     }
+
+    //2019-06-11
+    // helper files:
+
+
+
 }
 
 

@@ -32,7 +32,7 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
         p0.textViewName.text = user.aName
         p0.textViewAddress.text = user.aAlbum
         p0.textViewAddress2.text = user.aArtist
-        p0.textViewAddress3.text = user.aPath
+        p0.textViewAddress3.text = user.aShortPath
 
         // test: https://www.youtube.com/watch?v=k6GSQRnDGog
         val audio_click_me = p0.textViewName

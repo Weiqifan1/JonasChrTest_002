@@ -38,7 +38,7 @@ class AudioFileList : AppCompatActivity() {
 
             //startNewActivity(this, PlaySound::class.java,chosenAudioFile)
 
-            if (pathIsAFile(chosenAudioFile)){
+            if (pathIsAFile(chosenAudioFile) && chosenAudioFile.aAudList == ArrayList<Audio>()){
                 startNewActivity(this, PlaySound::class.java,chosenAudioFile)
             }else {
                 val gatherFolder2 = gatherInTopSubFolders(chosenAudioFile.aAudList)

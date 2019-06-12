@@ -35,6 +35,7 @@ class AudioFileList : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         audiofilelist_playBtn.setOnClickListener{
+
             //startNewActivity(this, PlaySound::class.java,chosenAudioFile)
 
             if (pathIsAFile(chosenAudioFile)){
@@ -129,7 +130,23 @@ class AudioFileList : AppCompatActivity() {
                 val topFolder = getTopFolder(item)
                 if (topFolder !in listOfTopFolders){
                     val allAudiosOfThatFolder = getAllAudioWithTopFolder(topFolder, flatAudioList)
-                    val folderObject = Audio(item.aPath, "topfolder: "+topFolder, "size: "+allAudiosOfThatFolder.size, "", "Folder", allAudiosOfThatFolder, removeTopFolder(item).aShortPath)
+                    //******************************
+                    //remove top folder
+
+                    val allAudiosOfThatFolder_withShorterShortPath = ArrayList<Audio>()
+                    for (foundAudio in allAudiosOfThatFolder) {
+                        val isItAFile = pathIsAFile(removeTopFolder(foundAudio))
+                        lateinit var AudioWithShorterShortpath: Audio
+                        if (isItAFile) {
+                            AudioWithShorterShortpath = Audio(foundAudio.aPath, foundAudio.aName, foundAudio.aAlbum, foundAudio.aArtist, "File", foundAudio.aAudList, removeTopFolder(foundAudio).aShortPath)
+                        }else {
+                            AudioWithShorterShortpath = Audio(foundAudio.aPath, foundAudio.aName, foundAudio.aAlbum, foundAudio.aArtist, "Folder", foundAudio.aAudList, removeTopFolder(foundAudio).aShortPath)
+                        }
+                        allAudiosOfThatFolder_withShorterShortPath.add(AudioWithShorterShortpath)
+
+                    }
+                    //******************************
+                    val folderObject = Audio(item.aPath, "topfolder: "+topFolder, "size: "+allAudiosOfThatFolder.size, "", "Folder", allAudiosOfThatFolder_withShorterShortPath, removeTopFolder(item).aShortPath)
                     newAudioList.add(folderObject)
                     listOfTopFolders.add(topFolder)
                 }

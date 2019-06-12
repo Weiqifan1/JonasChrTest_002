@@ -29,14 +29,14 @@ class AudioFileList : AppCompatActivity() {
 
         val audioInfoList : ArrayList<Audio> = getAllAudioFromDevice(this)
         //*********2019-06-11***************************************************************************
-        val gatherFolder = audioInfoList//gatherInTopSubFolders(audioInfoList)
+        val gatherFolder = gatherInTopSubFolders(audioInfoList)
         //******************************************************************************************
         val adapter = AudioFileListAdapter(gatherFolder, this)
         recyclerView.adapter = adapter
 
         audiofilelist_playBtn.setOnClickListener{
-            startNewActivity(this, PlaySound::class.java,chosenAudioFile)
-            /*
+            //startNewActivity(this, PlaySound::class.java,chosenAudioFile)
+
             if (pathIsAFile(chosenAudioFile)){
                 startNewActivity(this, PlaySound::class.java,chosenAudioFile)
             }else {
@@ -44,7 +44,7 @@ class AudioFileList : AppCompatActivity() {
                 val adapter2 = AudioFileListAdapter(gatherFolder2, this)
                 recyclerView.adapter = adapter2
             }
-            */
+
 
         }
     }
@@ -129,7 +129,7 @@ class AudioFileList : AppCompatActivity() {
                 val topFolder = getTopFolder(item)
                 if (topFolder !in listOfTopFolders){
                     val allAudiosOfThatFolder = getAllAudioWithTopFolder(topFolder, flatAudioList)
-                    val folderObject = Audio(item.aPath, topFolder, "", "", "Folder", allAudiosOfThatFolder, removeTopFolder(item).aShortPath)
+                    val folderObject = Audio(item.aPath, "topfolder: "+topFolder, "size: "+allAudiosOfThatFolder.size, "", "Folder", allAudiosOfThatFolder, removeTopFolder(item).aShortPath)
                     newAudioList.add(folderObject)
                     listOfTopFolders.add(topFolder)
                 }

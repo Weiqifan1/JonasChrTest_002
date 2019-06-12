@@ -34,6 +34,7 @@ class AudioFileList : AppCompatActivity() {
         val adapter = AudioFileListAdapter(gatherFolder, this)
         recyclerView.adapter = adapter
 
+        /*
         audiofilelist_playBtn.setOnClickListener{
 
             //startNewActivity(this, PlaySound::class.java,chosenAudioFile)
@@ -48,6 +49,7 @@ class AudioFileList : AppCompatActivity() {
 
 
         }
+        */
     }
 
     fun setCurrentFileChosen(nameOfAudioFile: String?){

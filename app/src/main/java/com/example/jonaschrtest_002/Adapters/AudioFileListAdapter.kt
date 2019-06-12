@@ -10,11 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter.Utils.startNewActivity
 import com.example.jonaschrtest_002.AudioFileList
 import com.example.jonaschrtest_002.MainActivity
 import com.example.jonaschrtest_002.Models.Audio
 import com.example.jonaschrtest_002.PlaySound
 import com.example.jonaschrtest_002.R
+import kotlinx.android.synthetic.main.activity_audiofilelist.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -45,6 +47,24 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
                 //Toast.makeText(context, user.aName, Toast.LENGTH_SHORT).show()
                 (context as AudioFileList).chosenAudioFile = user
                 (context as AudioFileList).setCurrentFileChosen(user.aPath)
+                if((context as AudioFileList).pathIsAFile((context as AudioFileList).chosenAudioFile) && (context as AudioFileList).chosenAudioFile.aAudList == ArrayList<Audio>() ){
+                    startNewActivity((context as AudioFileList), PlaySound::class.java,(context as AudioFileList).chosenAudioFile)
+                }else {
+                    val gatherFolder2 = (context as AudioFileList).gatherInTopSubFolders((context as AudioFileList).chosenAudioFile.aAudList)
+                    val adapter2 = AudioFileListAdapter(gatherFolder2, (context as AudioFileList))
+                    (context as AudioFileList).recyclerView.adapter = adapter2
+                }
+
+                /*
+
+                if (pathIsAFile(chosenAudioFile) && chosenAudioFile.aAudList == ArrayList<Audio>()){
+                    startNewActivity(this, PlaySound::class.java,chosenAudioFile)
+                }else {
+                    val gatherFolder2 = gatherInTopSubFolders(chosenAudioFile.aAudList)
+                    val adapter2 = AudioFileListAdapter(gatherFolder2, this)
+                    recyclerView.adapter = adapter2
+                }
+                */
 
             }
         }

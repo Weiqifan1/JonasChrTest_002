@@ -35,16 +35,10 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
         p0.textViewAddress.text = user.aAlbum
         p0.textViewAddress2.text = user.aArtist
         p0.textViewAddress3.text = user.aName
-
-        // test: https://www.youtube.com/watch?v=k6GSQRnDGog
         val audio_click_me = p0.textViewName
-        val audio_click_me2 = p0.textViewName
 
         audio_click_me.setOnClickListener {
-            //Utils.startNewActivity(context, PlaySound::class.java,user)
-            //Toast.makeText(context, user.aName, Toast.LENGTH_SHORT).show()
             if (context is AudioFileList) {
-                //Toast.makeText(context, user.aName, Toast.LENGTH_SHORT).show()
                 (context as AudioFileList).chosenAudioFile = user
                 (context as AudioFileList).setCurrentFileChosen(user.aPath)
                 if((context as AudioFileList).pathIsAFile((context as AudioFileList).chosenAudioFile) && (context as AudioFileList).chosenAudioFile.aAudList == ArrayList<Audio>() ){
@@ -56,18 +50,6 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
                     val adapter2 = AudioFileListAdapter(gatherFolder2, (context as AudioFileList))
                     (context as AudioFileList).recyclerView.adapter = adapter2
                 }
-
-                /*
-
-                if (pathIsAFile(chosenAudioFile) && chosenAudioFile.aAudList == ArrayList<Audio>()){
-                    startNewActivity(this, PlaySound::class.java,chosenAudioFile)
-                }else {
-                    val gatherFolder2 = gatherInTopSubFolders(chosenAudioFile.aAudList)
-                    val adapter2 = AudioFileListAdapter(gatherFolder2, this)
-                    recyclerView.adapter = adapter2
-                }
-                */
-
             }
         }
     }
@@ -89,18 +71,12 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
     }
 //https://stackoverflow.com/questions/49745488/how-to-start-a-new-activity-from-a-non-activity-class-in-android-kotlin
     object Utils {
-
         fun startNewActivity(context: Context, clazz: Class<*>, user:Audio) {
 
             val intent = Intent(context, clazz)
-// To pass any data to next activity
             intent.putExtra("valor", user.aPath)
             intent.putExtra("valorName" ,user.aName)
-// start your next activity
             context.startActivity(intent)
-
         }
-
-
     }
 }

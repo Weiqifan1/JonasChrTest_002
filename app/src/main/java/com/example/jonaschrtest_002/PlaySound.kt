@@ -42,35 +42,6 @@ class PlaySound : AppCompatActivity(){
 
         actplaysound_editTime.setOnClickListener{
             longToast("du klikkede edit time").show()
-            //actplaysound_displayTime.isFocusable = true
-            //actplaysound_displayTime.requestFocus()
-            //Toast(this).setText("du klikkede edit text").
-            //hide keyboard
-            //this.actplaysound_displayTime.requestFocus()
-
-
-
-            /*
-            val myview: View = this.currentFocus
-            if (myview != null) {
-                val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(myview.windowToken, 0)
-            }
-            */
-
-            /*
-            val editText: EditText = it as EditText
-            editText.requestFocus();
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
-            imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-            */
-
-            /*
-            val editText: EditText = it as EditText
-            editText.requestFocus();
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
-            imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-            */
 
         }
 

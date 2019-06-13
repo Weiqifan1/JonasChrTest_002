@@ -11,7 +11,8 @@
         android:orientation="vertical"
         android:focusableInTouchMode="true">
         <!-- 2019-06-13 ovenstående linje er et hack til at forhindre edit i at komme i focus ved
-         activity startup (i PlaySound.kt)-->
+         activity startup (i PlaySound.kt)
+         https://stackoverflow.com/questions/1555109/stop-edittext-from-gaining-focus-at-activity-startup-->
 
     <RelativeLayout
             android:layout_width="match_parent"

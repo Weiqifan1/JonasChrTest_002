@@ -77,7 +77,29 @@
             android:id="@+id/song_title"
             android:text="Title"
             android:layout_width="374dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="52dp"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+        <EditText
+                android:text="00:00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/actplaysound_displayTime"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:focusable="false"/>
+        <Button
+                android:text="Start Time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" android:id="@+id/actplaysound_startTime"
+                android:layout_weight="1"/>
+        <Button
+                android:text="Stop Time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" android:id="@+id/actplaysound_stopTime" android:layout_weight="1"/>
+    </LinearLayout>
 </LinearLayout>
 
 

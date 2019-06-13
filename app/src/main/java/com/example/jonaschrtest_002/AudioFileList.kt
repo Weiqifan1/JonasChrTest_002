@@ -13,6 +13,7 @@ import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter
 import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter.Utils.startNewActivity
 import com.example.jonaschrtest_002.Models.Audio
 import kotlinx.android.synthetic.main.activity_audiofilelist.*
+import kotlinx.android.synthetic.main.activity_playsound.*
 import org.jetbrains.anko.longToast
 
 class AudioFileList : AppCompatActivity() {
@@ -43,6 +44,19 @@ class AudioFileList : AppCompatActivity() {
                 recyclerView.adapter = adapter
             }
         }
+
+        //actplaysound_displayTime.setOnClickListener{
+            //Toast(this).setText("you clicked time")
+            //it.requestFocus();
+            //val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
+            //imm.showSoftInput(it, InputMethodManager.SHOW_IMPLICIT);
+            /*
+            it.requestFocus();
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+            */
+
+        //}
 
     }
 

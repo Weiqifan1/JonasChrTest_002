@@ -13,6 +13,8 @@ import android.net.Uri
 import android.os.Environment
 import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Handler
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.Toast
 import org.jetbrains.anko.longToast
@@ -40,13 +42,17 @@ class PlaySound : AppCompatActivity(){
             longToast("du klikkede edit time").show()
             //Toast(this).setText("du klikkede edit text").
 
-            //Toast(this).setText("you clicked time")
-            //it.requestFocus();
-            //val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
-            //imm.showSoftInput(it, InputMethodManager.SHOW_IMPLICIT);
             /*
-            it.requestFocus();
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            val editText: EditText = it as EditText
+            editText.requestFocus();
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
+            imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+            */
+
+            /*
+            val editText: EditText = it as EditText
+            editText.requestFocus();
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
             imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
             */
 

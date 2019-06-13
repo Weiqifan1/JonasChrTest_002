@@ -88,8 +88,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/actplaysound_displayTime"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:focusable="false"/>
+                android:textSize="18sp"/>
         <Button
                 android:text="Edit Time"
                 android:layout_width="wrap_content"

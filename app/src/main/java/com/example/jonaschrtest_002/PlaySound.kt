@@ -39,6 +39,10 @@ class PlaySound : AppCompatActivity(){
         val myValueName = intent.getStringExtra("valorName")
 
 
+        actplaysound_startTime.setOnClickListener{
+            var valueFromTime = actplaysound_displayTime.text
+            longToast(valueFromTime).show()
+        }
 
         actplaysound_editTime.setOnClickListener{
             longToast("du klikkede edit time").show()

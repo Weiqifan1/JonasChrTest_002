@@ -51,6 +51,8 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
                     startNewActivity((context as AudioFileList), PlaySound::class.java,(context as AudioFileList).chosenAudioFile)
                 }else {
                     val gatherFolder2 = (context as AudioFileList).gatherInTopSubFolders((context as AudioFileList).chosenAudioFile.aAudList)
+                    (context as AudioFileList).chosenAudioListOfList.add(gatherFolder2)
+                    (context as AudioFileList).audiofilelist_folderDepth.text = (context as AudioFileList).chosenAudioListOfList.size.toString()
                     val adapter2 = AudioFileListAdapter(gatherFolder2, (context as AudioFileList))
                     (context as AudioFileList).recyclerView.adapter = adapter2
                 }

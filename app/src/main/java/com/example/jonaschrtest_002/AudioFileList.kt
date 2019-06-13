@@ -17,6 +17,7 @@ import org.jetbrains.anko.longToast
 
 class AudioFileList : AppCompatActivity() {
 
+    var chosenAudioListOfList = ArrayList<ArrayList<Audio>>()
     var chosenAudioFile: Audio = Audio("none Chosen", "none", "", "", "", ArrayList<Audio>(), "")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,9 +31,19 @@ class AudioFileList : AppCompatActivity() {
         val audioInfoList : ArrayList<Audio> = getAllAudioFromDevice(this)
         //*********2019-06-11***************************************************************************
         val gatherFolder = gatherInTopSubFolders(audioInfoList)
+        chosenAudioListOfList.add(gatherFolder)
+        audiofilelist_folderDepth.text = chosenAudioListOfList.size.toString()
         //******************************************************************************************
         val adapter = AudioFileListAdapter(gatherFolder, this)
         recyclerView.adapter = adapter
+
+        audiofilelist_goBack.setOnClickListener{
+            if (chosenAudioListOfList.size > 1){
+                chosenAudioListOfList.removeAt(chosenAudioListOfList.size-1)
+                val adapter = AudioFileListAdapter(chosenAudioListOfList[chosenAudioListOfList.size-1], this)
+                recyclerView.adapter = adapter
+            }
+        }
 
         /*
         audiofilelist_playBtn.setOnClickListener{

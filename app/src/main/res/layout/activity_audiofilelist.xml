@@ -9,6 +9,10 @@ android:layout_height="match_parent"
 tools:context=".AudioFileList" android:orientation="vertical">
 
     <TextView
+            android:text="audiofilelist_folderDepth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/audiofilelist_folderDepth"/>
+    <TextView
             android:text="Current Audio file: "
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/audiofilelist_currentAudioFile"/>
@@ -21,11 +25,11 @@ tools:context=".AudioFileList" android:orientation="vertical">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/audiofilelist_playBtn" android:layout_weight="1"
             style="@style/Widget.AppCompat.Button.Borderless"/>
-    <Button
-            android:text="edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/audiofilelist_editBtn" android:layout_weight="1"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
+        <Button
+                android:text="GoBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/audiofilelist_goBack" android:layout_weight="1"
+                style="@style/Widget.AppCompat.Button.Borderless"/>
 
 </LinearLayout>
 

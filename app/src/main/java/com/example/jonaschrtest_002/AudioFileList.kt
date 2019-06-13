@@ -45,19 +45,6 @@ class AudioFileList : AppCompatActivity() {
             }
         }
 
-        //actplaysound_displayTime.setOnClickListener{
-            //Toast(this).setText("you clicked time")
-            //it.requestFocus();
-            //val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
-            //imm.showSoftInput(it, InputMethodManager.SHOW_IMPLICIT);
-            /*
-            it.requestFocus();
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-            */
-
-        //}
-
     }
 
     fun setCurrentFileChosen(nameOfAudioFile: String?){

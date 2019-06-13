@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Handler
 import android.widget.SeekBar
 import android.widget.Toast
+import org.jetbrains.anko.longToast
 
 class PlaySound : AppCompatActivity(){
 
@@ -33,6 +34,23 @@ class PlaySound : AppCompatActivity(){
         val intent = getIntent();
         var myValue = intent.getStringExtra("valor")
         val myValueName = intent.getStringExtra("valorName")
+
+
+        actplaysound_editTime.setOnClickListener{
+            longToast("du klikkede edit time").show()
+            //Toast(this).setText("du klikkede edit text").
+
+            //Toast(this).setText("you clicked time")
+            //it.requestFocus();
+            //val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
+            //imm.showSoftInput(it, InputMethodManager.SHOW_IMPLICIT);
+            /*
+            it.requestFocus();
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+            */
+
+        }
 
         // Start the media player
         button_play.setOnClickListener {

@@ -29,38 +29,21 @@ class AudioFileList : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
         val audioInfoList : ArrayList<Audio> = getAllAudioFromDevice(this)
-        //*********2019-06-11***************************************************************************
         val gatherFolder = gatherInTopSubFolders(audioInfoList)
         chosenAudioListOfList.add(gatherFolder)
         audiofilelist_folderDepth.text = chosenAudioListOfList.size.toString()
-        //******************************************************************************************
         val adapter = AudioFileListAdapter(gatherFolder, this)
         recyclerView.adapter = adapter
 
         audiofilelist_goBack.setOnClickListener{
             if (chosenAudioListOfList.size > 1){
                 chosenAudioListOfList.removeAt(chosenAudioListOfList.size-1)
+                audiofilelist_folderDepth.text = chosenAudioListOfList.size.toString()
                 val adapter = AudioFileListAdapter(chosenAudioListOfList[chosenAudioListOfList.size-1], this)
                 recyclerView.adapter = adapter
             }
         }
 
-        /*
-        audiofilelist_playBtn.setOnClickListener{
-
-            //startNewActivity(this, PlaySound::class.java,chosenAudioFile)
-
-            if (pathIsAFile(chosenAudioFile) && chosenAudioFile.aAudList == ArrayList<Audio>()){
-                startNewActivity(this, PlaySound::class.java,chosenAudioFile)
-            }else {
-                val gatherFolder2 = gatherInTopSubFolders(chosenAudioFile.aAudList)
-                val adapter2 = AudioFileListAdapter(gatherFolder2, this)
-                recyclerView.adapter = adapter2
-            }
-
-
-        }
-        */
     }
 
     fun setCurrentFileChosen(nameOfAudioFile: String?){

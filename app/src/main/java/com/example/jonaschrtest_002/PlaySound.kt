@@ -13,6 +13,7 @@ import android.net.Uri
 import android.os.Environment
 import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Handler
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.SeekBar
@@ -38,9 +39,24 @@ class PlaySound : AppCompatActivity(){
         val myValueName = intent.getStringExtra("valorName")
 
 
+
         actplaysound_editTime.setOnClickListener{
             longToast("du klikkede edit time").show()
+            //actplaysound_displayTime.isFocusable = true
+            //actplaysound_displayTime.requestFocus()
             //Toast(this).setText("du klikkede edit text").
+            //hide keyboard
+            //this.actplaysound_displayTime.requestFocus()
+
+
+
+            /*
+            val myview: View = this.currentFocus
+            if (myview != null) {
+                val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(myview.windowToken, 0)
+            }
+            */
 
             /*
             val editText: EditText = it as EditText

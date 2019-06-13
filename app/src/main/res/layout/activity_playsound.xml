@@ -9,7 +9,10 @@
         android:background="#e7faef"
         android:padding="16dp"
         android:orientation="vertical"
->
+        android:focusableInTouchMode="true">
+        <!-- 2019-06-13 ovenstående linje er et hack til at forhindre edit i at komme i focus ved
+         activity startup (i PlaySound.kt)-->
+
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,12 +86,13 @@
             android:layout_width="match_parent"
             android:layout_height="60dp">
         <EditText
-                android:text="00:00:00"
+                android:hint="time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/actplaysound_displayTime"
                 android:layout_weight="1"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:inputType="time"/>
         <Button
                 android:text="Edit Time"
                 android:layout_width="wrap_content"
@@ -103,6 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" android:id="@+id/actplaysound_stopTime" android:layout_weight="1"/>
     </LinearLayout>
+
 </LinearLayout>
 
 

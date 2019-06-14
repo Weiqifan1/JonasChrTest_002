@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".AudioFileList" android:orientation="vertical">
+
+    <TextView
+            android:text="audiofilelist_folderDepth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/audiofilelist_folderDepth"/>
+    <TextView
+            android:text="Current Audio file: "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/audiofilelist_currentAudioFile"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:gravity="center_horizontal" android:layout_margin="10dp">
+    <Button
+            android:text="play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/audiofilelist_playBtn" android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+        <Button
+                android:text="GoBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/audiofilelist_goBack" android:layout_weight="1"
+                style="@style/Widget.AppCompat.Button.Borderless"/>
+
+</LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerView"
+            android:layout_margin="10dp"/>
+</LinearLayout>
+
+<!--
+
+<TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TableRow android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="10dp">
+        <TextView
+                android:id="@+id/textView"
+                android:text="Book path:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"/>
+        <TextView
+                android:id="@+id/bookPath"
+                android:text="No Book Selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"/>
+    </TableRow>
+    <TableRow android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="10dp">
+        <TextView
+                android:id="@+id/textView2"
+                android:text="Book title:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"/>
+        <EditText
+                android:id="@+id/bookTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:textSize="18sp"
+                android:importantForAutofill="no"/>
+    </TableRow>
+    <TableRow android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="10dp">
+        <TextView
+                android:id="@+id/textView4"
+                android:text="quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"/>
+        <EditText
+                android:id="@+id/productQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:textSize="18sp"/>
+    </TableRow>
+</TableLayout>
+-->

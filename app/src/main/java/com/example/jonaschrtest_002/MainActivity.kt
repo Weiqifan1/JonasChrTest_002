@@ -8,16 +8,24 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.support.design.widget.Snackbar
 import android.util.Log
+import com.example.jonaschrtest_002.Adapters.AdapterActivity
+
 import com.sembozdemir.permissionskt.askPermissions
 import com.sembozdemir.permissionskt.handlePermissionsResult
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_playsound.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.startActivity
 
 class MainActivity : Activity() {
     private var mediaPlayer: MediaPlayer? = null
     private val wantedPerm = Manifest.permission.WRITE_EXTERNAL_STORAGE
     private val TAG = MainActivity::class.java.name;
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,17 +33,27 @@ class MainActivity : Activity() {
 
 
 
+
+        simple_list_button.onClick { startActivity<SimpleActivity>() }
+        adapter_list_button.onClick { startActivity<AdapterActivity>() }
+        recycle_view_button.onClick { startActivity<RecyclerActivity>() }
+        recycler_db_button.onClick { startActivity<DatabaseActivity>() }
+        rest_button.onClick { startActivity<RestActivity>() }
+
+
         actmain_playsoundBtn.setOnClickListener {
             startActivity(Intent(this, PlaySound::class.java))
         }
-        actmain_todiskbooks.setOnClickListener {
-            startActivity(Intent(this, DiskBooks::class.java))
-        }
+        //actmain_todiskbooks.setOnClickListener {
+            //startActivity(Intent(this, DiskBooks::class.java))
+     //   }
         actmain_recycle.setOnClickListener {
             startActivity(Intent(this, AudioFileList::class.java))
         }
 
-
+        //actmain_dbhelp.setOnClickListener{
+         //   startActivity(Intent(this, Dbhelp::class.java))
+        //}
 
 //https://en.proft.me/2017/06/14/runtime-permissions-android-marshmallow-60-and-abo/
         askPermissions(wantedPerm) {

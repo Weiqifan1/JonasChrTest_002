@@ -36,32 +36,48 @@ class PlaySound : AppCompatActivity(){
 
         // Start the media player
         button_play.setOnClickListener {
-            if (startPlayer == true){
 
-                val data = Uri.parse (myValue)
+                if (startPlayer == true) {
+                    if (myValue==null){
 
-                 player = MediaPlayer().apply {
-                    setDataSource(applicationContext, data)
-                    try { prepare() } catch (e: IllegalStateException) { null}
-                    start()
+                            if (myValue==null){
+                                player  = MediaPlayer.create (this, R.raw.explosion)
+                            }
+                            player.start()
+                        song_title.text = "Explosion"
+                        }else{
+
+                    val data = Uri.parse(myValue)
+
+                    player = MediaPlayer().apply {
+                        setDataSource(applicationContext, data)
+                        try {
+                            prepare()
+                        } catch (e: IllegalStateException) {
+                            null
+                        }
+                        start()
+                    }
+                        song_title.text = myValueName
                 }
-                song_title.text = myValueName
 
 
-                tv_duration.text = "${player.seconds} sec"
-                initializeSeekBar()
-                startPlayer=false
 
-                it.isEnabled = false
-                button_stop.isEnabled = true
-                button_fast_forward.isEnabled = true
-                button_fast_backward.isEnabled = true
-                button_play.isEnabled = true
-            }else{
-                player.start()
-                button_stop.isEnabled = true
-                button_play.isEnabled = true
-            }
+                    tv_duration.text = "${player.seconds} sec"
+                    initializeSeekBar()
+                    startPlayer = false
+
+                    it.isEnabled = false
+                    button_stop.isEnabled = true
+                    button_fast_forward.isEnabled = true
+                    button_fast_backward.isEnabled = true
+                    button_play.isEnabled = true
+                } else {
+                    player.start()
+                    button_stop.isEnabled = true
+                    button_play.isEnabled = true
+                }
+
         }
         // Stop the media player
         button_stop.setOnClickListener{
@@ -119,6 +135,8 @@ class PlaySound : AppCompatActivity(){
     override fun onBackPressed()  {
         if (player.isPlaying()) {
             player.stop();
+        }else{
+
         }
         super.onBackPressed();
        

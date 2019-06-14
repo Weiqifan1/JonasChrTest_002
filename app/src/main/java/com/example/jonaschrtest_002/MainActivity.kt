@@ -4,13 +4,10 @@ import android.Manifest
 import android.os.Bundle
 
 import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.media.MediaPlayer
 import android.support.design.widget.Snackbar
 import android.util.Log
-import android.view.View
-import com.example.jonaschrtest_002.Database.DatabaseActivity
 import com.sembozdemir.permissionskt.askPermissions
 import com.sembozdemir.permissionskt.handlePermissionsResult
 
@@ -38,10 +35,7 @@ class MainActivity : Activity() {
             startActivity(Intent(this, AudioFileList::class.java))
         }
 
-        actmain_dbsqlite.setOnClickListener{
-            //startActivity(Intent(this, Dbsqlite::class.java))
-            startActivity(Intent(this, DatabaseActivity::class.java))
-        }
+
 
 //https://en.proft.me/2017/06/14/runtime-permissions-android-marshmallow-60-and-abo/
         askPermissions(wantedPerm) {

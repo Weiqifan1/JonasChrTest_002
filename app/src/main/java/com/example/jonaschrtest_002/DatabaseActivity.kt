@@ -15,7 +15,7 @@ class DatabaseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_database)
         }
 
-    override fun onResume() {
+    /*override fun onResume() {
         super.onResume()
         val dbPets = database.use {
             select("Pets").parseList(petParser)
@@ -25,5 +25,18 @@ class DatabaseActivity : AppCompatActivity() {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this@DatabaseActivity)
             }
+        }*/
+
+    override fun onResume() {
+        super.onResume()
+        val dbBookMarks = database.use {
+            select("BookMarks").parseList(bookMarkParser)
         }
+        db_pet_recycler.apply {
+            adapter = PetRecyclerAdapter(dbBookMarks)
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@DatabaseActivity)
+        }
+    }
+
     }

@@ -23,7 +23,7 @@ class VetBaseOpenHelper(context: Context = App.instance) :
 
     override fun onCreate(db: SQLiteDatabase) {
         // Here you create tables
-        db.createTable(Pet.TABLE_NAME, true,
+      /*  db.createTable(Pet.TABLE_NAME, true,
             Pet.DTYPE to TEXT,
             Pet.ID to INTEGER + PRIMARY_KEY + UNIQUE,
             Pet.NAME to TEXT,
@@ -31,8 +31,25 @@ class VetBaseOpenHelper(context: Context = App.instance) :
             Cat.LIVES_LEFT to INTEGER,
             Dog.BARK_PITCH to TEXT
             )
+*/
+        db.createTable(BookMark.TABLE_NAME2, true,
+            BookMark.ID to INTEGER + PRIMARY_KEY + UNIQUE,
+            BookMark.BOOKMARK_NAME to TEXT,
+            BookMark.BOOK_Path to TEXT,
+            BookMark.FROM_BOOK to INTEGER,
+            BookMark.BOOKTIME to INTEGER
+        )
 
-        db.insert(Pet.TABLE_NAME,
+        db.insert(BookMark.TABLE_NAME2,
+            BookMark.ID to 1,
+            BookMark.BOOKMARK_NAME to "All Time Low Weightless bookmark 1",
+            BookMark.BOOK_Path to "Current Audio file: /storage/emulated/0/Music/All Time Low - Nothing Personal/01 Weigthless.mp3",
+            BookMark.FROM_BOOK to "All Time Low Weightless",
+            BookMark.BOOKTIME to 9
+        )
+
+
+      /*  db.insert(Pet.TABLE_NAME,
             Pet.DTYPE to "Cat",
             Pet.ID to 1,
             Pet.NAME to "Felix",
@@ -55,22 +72,18 @@ class VetBaseOpenHelper(context: Context = App.instance) :
             "alive" to 1,
             Cat.LIVES_LEFT to 0,
             Dog.BARK_PITCH to ""
-            )
+            )*/
 
         }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // Here you can upgrade tables, as usual
-        db.dropTable(Pet.TABLE_NAME, true)
+        db.dropTable(BookMark.TABLE_NAME2, true)
         onCreate(db)
         }
 
-
-
     }
 
-val Context.database: VetBaseOpenHelper
-    get() = VetBaseOpenHelper.instance
 
 val petParser = rowParser {
         dtype: String,
@@ -86,4 +99,17 @@ val petParser = rowParser {
         else -> throw IllegalArgumentException("no such type $dtype")
         }
     }
+
+
+val Context.database: VetBaseOpenHelper
+    get() = VetBaseOpenHelper.instance
+
+
+val bookMarkParser = rowParser {
+        id: Int,
+        bookMarkName: String,
+        bookPath: String,
+        fromBook : String,
+        bookTime: Int ->
+}
 

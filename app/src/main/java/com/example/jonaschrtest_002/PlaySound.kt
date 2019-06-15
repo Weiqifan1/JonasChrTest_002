@@ -18,7 +18,7 @@ import android.widget.Toast
 
 class PlaySound : AppCompatActivity(){
 
-    private  var mediaPlayer:MediaPlayer? = null
+
 
     private lateinit var player: MediaPlayer
     private lateinit var runnable:Runnable
@@ -37,17 +37,13 @@ class PlaySound : AppCompatActivity(){
         // Start the media player
         button_play.setOnClickListener {
             if (startPlayer == true){
-
                 val data = Uri.parse (myValue)
-
                  player = MediaPlayer().apply {
                     setDataSource(applicationContext, data)
                     try { prepare() } catch (e: IllegalStateException) { null}
                     start()
                 }
                 song_title.text = myValueName
-
-
                 tv_duration.text = "${player.seconds} sec"
                 initializeSeekBar()
                 startPlayer=false
@@ -73,24 +69,15 @@ class PlaySound : AppCompatActivity(){
             }
         }
 
-
-
-
-
-
         // +5 sec
         button_fast_forward.setOnClickListener{
             val currentSec = player.currentSeconds +5
-
             player.seekTo(currentSec * 1000)
 
         }
         // -5 sec
         button_fast_backward.setOnClickListener {
-
-
             val currentSec = player.currentSeconds - 5
-
             if (player.currentSeconds <=5){
                 player.seekTo(0 * 1000)
             }else {
@@ -100,9 +87,6 @@ class PlaySound : AppCompatActivity(){
 
 
         }
-
-
-
         // Seek bar change listener
         seek_bar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {

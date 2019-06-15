@@ -28,11 +28,40 @@ class Cat(id: Int, name: String, alive: Boolean = true, var livesLeft: Int = 9) 
 
 class Dog(id: Int, name: String, alive: Boolean = true, val barkPitch: String) : Pet(id, name, alive) {
     companion object {
-        val BARK_PITCH = "barkPitch"
+        val BARK_PITC = "barkPitch"
         }
     override val description: String
         get() = "The dog named $name barks at $barkPitch"
     }
+
+
+open class BookMark(val id: Int, var bookMarkName: String,var bookPath:String, var fromBook: String, var bookTime : Int = 0){
+
+    companion object{
+        val TABLE_NAME2 = "BookMarks"
+        val ID = "id"
+        val BOOKMARK_NAME = "name"
+        val BOOK_Path = "bookPath"
+        val FROM_BOOK = "fromBook"
+        val BOOKTIME = "bookTime"
+    }
+
+}
+
+
+
+
+val bookMarks = mutableListOf(
+    BookMark(1, "All Time Low 1",
+        "/storage/emulated/0/Music/All Time Low - Nothing Personal/01 Weigthless.mp3",
+        "All Time Low",0 ),
+    BookMark(2, "All Time Low 2",
+        "/storage/emulated/0/Music/All Time Low - Nothing Personal/01 Weigthless.mp3",
+        "All Time Low",0 )
+
+    )
+
+
 
 val pets = mutableListOf(
     Cat(1, "Felix"),

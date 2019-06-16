@@ -35,7 +35,7 @@ class PlaySound : AppCompatActivity(){
         setContentView(R.layout.activity_playsound)
         var startPlayer = true
 
-       // val user = intent.getStringExtra("valor")
+
         val intent = getIntent();
         var myValue = intent.getStringExtra("valor")
         val myValueName = intent.getStringExtra("valorName")
@@ -52,7 +52,7 @@ class PlaySound : AppCompatActivity(){
                 "BookTime: "+ (currentTime/1000).toString() + "Seconds",
                 currentTime)
 
-            //vetBaseCopy.insertBookMark(EtNytBogmaerke, database)
+
             database.use {
                 insert(BookMark.TABLE_NAME2,
                     BookMark.ID to EtNytBogmaerke.id,

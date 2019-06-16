@@ -47,12 +47,9 @@ class EditPetActivity : AppCompatActivity() {
         }
 
         update_button.onClick {
-            // val id = id_text.text.toString().toInt()
             val name = name_edit.text.toString()
             database.use {
                 update(BookMark.TABLE_NAME2, BookMark.BOOKMARK_NAME to name)
-                    // .whereArgs("id = {id}", Pair("id", id))
-                    // .whereSimple("id = ?", id.toString())
                     .whereArgs("id = {id}", "id" to id)
                     .exec()
                 }

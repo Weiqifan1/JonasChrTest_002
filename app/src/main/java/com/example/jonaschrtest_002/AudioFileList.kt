@@ -83,10 +83,6 @@ class AudioFileList : AppCompatActivity() {
                     "0"
                 )
 
-
-                //Log.e("Name :$aPath", " Album :$album")
-                //Log.e("Path :$path", " Artist :$artist")
-
                 tempAudioList.add(audioModel)
             }
             c.close()
@@ -199,8 +195,6 @@ class AudioFileList : AppCompatActivity() {
         val regex = """(/[^/]+)(/.*)""".toRegex()
         val matchResult = regex.find(shortpath)
         val (part1, part2) = matchResult!!.destructured
-        //println(part1)
-        //println(part2)
         val newaudioobject = Audio(audioObject.aPath, audioObject.aName,audioObject.aAlbum,audioObject.aArtist,audioObject.aFolderOrFile,audioObject.aAudList,part2, "0")
         return newaudioobject
     }

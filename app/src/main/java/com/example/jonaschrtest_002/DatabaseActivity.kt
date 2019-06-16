@@ -15,17 +15,7 @@ class DatabaseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_database)
         }
 
-    /*override fun onResume() {
-        super.onResume()
-        val dbPets = database.use {
-            select("Pets").parseList(petParser)
-            }
-        db_pet_recycler.apply {
-            adapter = PetRecyclerAdapter(dbPets)
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this@DatabaseActivity)
-            }
-        }*/
+
 
     override fun onResume() {
         super.onResume()

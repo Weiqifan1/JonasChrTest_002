@@ -76,6 +76,7 @@ class AudioFileListAdapter(val userList: ArrayList<Audio>, private val context: 
             val intent = Intent(context, clazz)
             intent.putExtra("valor", user.aPath)
             intent.putExtra("valorName" ,user.aName)
+            intent.putExtra("valorBookMarkTime", user.bookMarkTime)
             context.startActivity(intent)
         }
     }

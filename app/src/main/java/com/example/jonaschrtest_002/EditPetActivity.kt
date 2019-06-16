@@ -1,7 +1,12 @@
 package com.example.jonaschrtest_002
 
+import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter
+import com.example.jonaschrtest_002.EditPetActivity.Utils.startNewActivity
+import com.example.jonaschrtest_002.Models.Audio
 import kotlinx.android.synthetic.main.activity_edit_pet.*
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.db.update
@@ -21,6 +26,18 @@ class EditPetActivity : AppCompatActivity() {
         id_text.text = bookMark.id.toString()
         name_edit.setText(bookMark.bookMarkName)
 
+        playBookMark.onClick {
+            //Audio("none Chosen", "none", "", "", "", ArrayList<Audio>(), "")
+            val ourNewAudio = Audio(bookMark.bookPath,
+                bookMark.bookMarkName, "", "", "File", ArrayList<Audio>(), "",bookMark.bookTime.toString())
+
+            startNewActivity(
+                this@EditPetActivity,
+                PlaySound::class.java,
+                ourNewAudio
+            )
+        }
+
         update_button.onClick {
             // val id = id_text.text.toString().toInt()
             val name = name_edit.text.toString()
@@ -33,5 +50,16 @@ class EditPetActivity : AppCompatActivity() {
                 }
             finish()
             }
+    }
+
+    object Utils {
+        fun startNewActivity(context: Context, clazz: Class<*>, user:Audio) {
+
+            val intent = Intent(context, clazz)
+            intent.putExtra("valor", user.aPath)
+            intent.putExtra("valorName" ,user.aName)
+            intent.putExtra("valorBookMarkTime", user.bookMarkTime)
+            context.startActivity(intent)
+        }
     }
 }

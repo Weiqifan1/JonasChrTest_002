@@ -61,7 +61,8 @@ class DiskBooks: AppCompatActivity() {
                     c.getString(3),
                     "File",
                     ArrayList<Audio>(),
-                    c.getString(0)
+                    c.getString(0),
+                    "0"
                 )
 
                 /*
@@ -97,7 +98,7 @@ class DiskBooks: AppCompatActivity() {
         val storage: String = "/storage/emulated/0"
         for (item in listOfAudioFiles) {
             val topdirectory = item.aPath.subSequence(storage.length, item.aPath.length)
-            val newAudio = Audio(topdirectory.toString(), item.aName, item.aAlbum, item.aArtist, item.aFolderOrFile, ArrayList<Audio>(), item.aPath)
+            val newAudio = Audio(topdirectory.toString(), item.aName, item.aAlbum, item.aArtist, item.aFolderOrFile, ArrayList<Audio>(), item.aPath, "0")
             result.add(newAudio)
         }
         return result

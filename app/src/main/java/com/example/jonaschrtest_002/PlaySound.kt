@@ -39,6 +39,7 @@ class PlaySound : AppCompatActivity(){
         val intent = getIntent();
         var myValue = intent.getStringExtra("valor")
         val myValueName = intent.getStringExtra("valorName")
+        val myValorBookMarkTime = intent.getStringExtra("valorBookMarkTime")
 
         playSound_addBookmark.setOnClickListener{
             val pathToOurAudioFile = myValue
@@ -48,7 +49,7 @@ class PlaySound : AppCompatActivity(){
                 bookMarkContainer.size+1,
                 myValueName + " " + (bookMarkContainer.size+1).toString(),
                 pathToOurAudioFile,
-                "blabla comment",
+                "BookTime: "+currentTime.toString(),
                 currentTime)
 
             //vetBaseCopy.insertBookMark(EtNytBogmaerke, database)
@@ -77,11 +78,23 @@ class PlaySound : AppCompatActivity(){
         button_play.setOnClickListener {
             if (startPlayer == true){
                 val data = Uri.parse (myValue)
-                 player = MediaPlayer().apply {
+                player = MediaPlayer()
+
+                 player.apply {
                     setDataSource(applicationContext, data)
                     try { prepare() } catch (e: IllegalStateException) { null}
-                    start()
+                     //if (myValorBookMarkTime != null) {
+
+                     val currentSec = player.currentSeconds +myValorBookMarkTime.toInt()
+                     player.seekTo(currentSec )
+
+
+                     //}
+                     start()
                 }
+
+
+
                 song_title.text = myValueName
                 tv_duration.text = "${player.seconds} sec"
                 initializeSeekBar()

@@ -18,7 +18,7 @@ import org.jetbrains.anko.longToast
 class AudioFileList : AppCompatActivity() {
 
     var chosenAudioListOfList = ArrayList<ArrayList<Audio>>()
-    var chosenAudioFile: Audio = Audio("none Chosen", "none", "", "", "", ArrayList<Audio>(), "")
+    var chosenAudioFile: Audio = Audio("none Chosen", "none", "", "", "", ArrayList<Audio>(), "", "0")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,7 +79,8 @@ class AudioFileList : AppCompatActivity() {
                     c.getString(3),
                     "File",
                     ArrayList<Audio>(),
-                    c.getString(0)
+                    c.getString(0),
+                    "0"
                 )
 
 
@@ -109,7 +110,7 @@ class AudioFileList : AppCompatActivity() {
         val storage: String = "/storage/emulated/0"
         for (item in listOfAudioFiles) {
             val topdirectory = item.aPath.subSequence(storage.length, item.aPath.length)
-            val newAudio = Audio(item.aPath, item.aName, item.aAlbum, item.aArtist, item.aFolderOrFile, ArrayList<Audio>(), topdirectory.toString())
+            val newAudio = Audio(item.aPath, item.aName, item.aAlbum, item.aArtist, item.aFolderOrFile, ArrayList<Audio>(), topdirectory.toString(), "0")
             result.add(newAudio)
         }
         return result
@@ -134,15 +135,15 @@ class AudioFileList : AppCompatActivity() {
                         val isItAFile = pathIsAFile(removeTopFolder(foundAudio))
                         lateinit var AudioWithShorterShortpath: Audio
                         if (isItAFile) {
-                            AudioWithShorterShortpath = Audio(foundAudio.aPath, foundAudio.aName, foundAudio.aAlbum, foundAudio.aArtist, "File", foundAudio.aAudList, removeTopFolder(foundAudio).aShortPath)
+                            AudioWithShorterShortpath = Audio(foundAudio.aPath, foundAudio.aName, foundAudio.aAlbum, foundAudio.aArtist, "File", foundAudio.aAudList, removeTopFolder(foundAudio).aShortPath, "0")
                         }else {
-                            AudioWithShorterShortpath = Audio(foundAudio.aPath, foundAudio.aName, foundAudio.aAlbum, foundAudio.aArtist, "Folder", foundAudio.aAudList, removeTopFolder(foundAudio).aShortPath)
+                            AudioWithShorterShortpath = Audio(foundAudio.aPath, foundAudio.aName, foundAudio.aAlbum, foundAudio.aArtist, "Folder", foundAudio.aAudList, removeTopFolder(foundAudio).aShortPath, "0")
                         }
                         allAudiosOfThatFolder_withShorterShortPath.add(AudioWithShorterShortpath)
 
                     }
                     //******************************
-                    val folderObject = Audio(item.aPath, "topfolder: "+topFolder, "size: "+allAudiosOfThatFolder.size, "", "Folder", allAudiosOfThatFolder_withShorterShortPath, removeTopFolder(item).aShortPath)
+                    val folderObject = Audio(item.aPath, "topfolder: "+topFolder, "size: "+allAudiosOfThatFolder.size, "", "Folder", allAudiosOfThatFolder_withShorterShortPath, removeTopFolder(item).aShortPath, "0")
                     newAudioList.add(folderObject)
                     listOfTopFolders.add(topFolder)
                 }
@@ -200,7 +201,7 @@ class AudioFileList : AppCompatActivity() {
         val (part1, part2) = matchResult!!.destructured
         //println(part1)
         //println(part2)
-        val newaudioobject = Audio(audioObject.aPath, audioObject.aName,audioObject.aAlbum,audioObject.aArtist,audioObject.aFolderOrFile,audioObject.aAudList,part2)
+        val newaudioobject = Audio(audioObject.aPath, audioObject.aName,audioObject.aAlbum,audioObject.aArtist,audioObject.aFolderOrFile,audioObject.aAudList,part2, "0")
         return newaudioobject
     }
 

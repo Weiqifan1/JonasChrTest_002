@@ -34,11 +34,11 @@ class MainActivity : Activity() {
 
 
 
-        simple_list_button.onClick { startActivity<SimpleActivity>() }
-        adapter_list_button.onClick { startActivity<AdapterActivity>() }
-        recycle_view_button.onClick { startActivity<RecyclerActivity>() }
+        //simple_list_button.onClick { startActivity<SimpleActivity>() }
+        //adapter_list_button.onClick { startActivity<AdapterActivity>() }
+        //recycle_view_button.onClick { startActivity<RecyclerActivity>() }
         recycler_db_button.onClick { startActivity<DatabaseActivity>() }
-        rest_button.onClick { startActivity<RestActivity>() }
+        //rest_button.onClick { startActivity<RestActivity>() }
 
 
         actmain_playsoundBtn.setOnClickListener {

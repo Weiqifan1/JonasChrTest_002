@@ -62,53 +62,60 @@ class PlaySound : AppCompatActivity(){
                     BookMark.BOOKTIME to EtNytBogmaerke.bookTime
                 )
             }
-            /*
 
-                db.insert(BookMark.TABLE_NAME2,
-                    BookMark.ID to 1,
-                    BookMark.BOOKMARK_NAME to "All Time Low Weightless bookmark 1",
-                    BookMark.BOOK_Path to "/storage/emulated/0/Music/All Time Low - Nothing Personal/01 Weigthless.mp3",
-                    BookMark.FROM_BOOK to "All Time Low Weightless",
-                    BookMark.BOOKTIME to 9
-                )
-            */
         }
 
         // Start the media player
         button_play.setOnClickListener {
-            if (startPlayer == true){
-                val data = Uri.parse (myValue)
-                player = MediaPlayer()
-
-                 player.apply {
-                    setDataSource(applicationContext, data)
-                    try { prepare() } catch (e: IllegalStateException) { null}
-                     //if (myValorBookMarkTime != null) {
-
-                     val currentSec = player.currentSeconds +myValorBookMarkTime.toInt()
-                     player.seekTo(currentSec )
+            if (startPlayer == true) {
 
 
-                     //}
-                     start()
+                //If no book have been chosen it will play default sound bit
+                if (myValue == null) {
+                    player = MediaPlayer.create(this, R.raw.explosion)
+                    player.start()
+                    song_title.text = myValueName
+                    tv_duration.text = "${player.seconds} sec"
+                    initializeSeekBar()
+                    startPlayer = false
+
+                    it.isEnabled = false
+                    button_stop.isEnabled = true
+                    button_fast_forward.isEnabled = true
+                    button_fast_backward.isEnabled = true
+                    button_play.isEnabled = true
+
+                } else {
+
+
+
+                    val data = Uri.parse(myValue)
+                    player = MediaPlayer()
+
+                    player.apply {
+                        setDataSource(applicationContext, data)
+                        try {
+                            prepare()
+                        } catch (e: IllegalStateException) {
+                            null
+                        }
+
+                        val currentSec = player.currentSeconds + myValorBookMarkTime.toInt()
+                        player.seekTo(currentSec)
+
+                        start()
+                    }
+                    song_title.text = myValueName
+                    tv_duration.text = "${player.seconds} sec"
+                    initializeSeekBar()
+                    startPlayer = false
+
+                    it.isEnabled = false
+                    button_stop.isEnabled = true
+                    button_fast_forward.isEnabled = true
+                    button_fast_backward.isEnabled = true
+                    button_play.isEnabled = true
                 }
-
-
-
-                song_title.text = myValueName
-                tv_duration.text = "${player.seconds} sec"
-                initializeSeekBar()
-                startPlayer=false
-
-                it.isEnabled = false
-                button_stop.isEnabled = true
-                button_fast_forward.isEnabled = true
-                button_fast_backward.isEnabled = true
-                button_play.isEnabled = true
-            }else{
-                player.start()
-                button_stop.isEnabled = true
-                button_play.isEnabled = true
             }
         }
         // Stop the media player
@@ -207,53 +214,3 @@ fun Context.toast(message:String){
 
 
 
-/*
-
-class PlaySound : AppCompatActivity(){
-
-    private  var mediaPlayer:MediaPlayer? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_playsound)
-
-
-        mediaPlayer = MediaPlayer.create(this,R.raw.explosion)
-        mediaPlayer?.setOnPreparedListener{
-            (println("Ready to go"))
-
-
-        }
-
-        pushButton.setOnTouchListener{ _,event ->
-            handleTouch(event)
-            true
-
-        }
-
-    }
-
-
-    private fun handleTouch(event: MotionEvent){
-        when (event.action){
-            MotionEvent.ACTION_DOWN ->{
-                println("down")
-                mediaPlayer?.start()
-            }
-            MotionEvent.ACTION_CANCEL,MotionEvent.ACTION_UP -> {
-                println("up or cancel")
-                mediaPlayer?.pause()
-                mediaPlayer?.seekTo(0)
-            }
-            else -> {
-                println("other")
-            }
-        }
-    }
-
-
-
-
-}
-
-*/

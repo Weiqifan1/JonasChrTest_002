@@ -36,10 +36,11 @@ class PlaySound : AppCompatActivity() {
         playSound_addBookmark.setOnClickListener {
             val pathToOurAudioFile = myValue
             val currentTime = player.currentPosition
+            val idToUse = getLargestBookMarkId(bookMarkContainer) +1
 
             val EtNytBogmaerke = BookMark(
-                bookMarkContainer.size + 1,
-                myValueName + " " + (bookMarkContainer.size + 1).toString(),
+                idToUse,
+                myValueName + " " + idToUse.toString(),
                 pathToOurAudioFile,
                 "BookTime: " + (currentTime / 1000).toString() + "Seconds",
                 currentTime
@@ -196,6 +197,16 @@ class PlaySound : AppCompatActivity() {
             override fun onStopTrackingTouch(seekBar: SeekBar) {
             }
         })
+    }
+
+    fun getLargestBookMarkId(bookMarkContainer: List<BookMark>): Int{
+        var largestId = 0
+        for (item in bookMarkContainer){
+            if (item.id >= largestId){
+                largestId = item.id
+            }
+        }
+        return largestId
     }
 
     override fun onBackPressed()  {

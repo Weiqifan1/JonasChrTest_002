@@ -24,8 +24,6 @@ class MainActivity : Activity() {
 
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,11 +46,9 @@ class MainActivity : Activity() {
             onGranted {
                 writeFile()
             }
-
             onDenied {
                 Log.d(TAG, "WRITE_EXTERNAL_STORAGE permission is denied.")
             }
-
             onShowRationale { request ->
                 Snackbar.make(
                     root_layout, "You should grant WRITE_EXTERNAL_STORAGE permission",
@@ -61,13 +57,10 @@ class MainActivity : Activity() {
                     .setAction("Retry") { request.retry() }
                     .show()
             }
-
             onNeverAskAgain {
                 Log.d(TAG, "Never ask again for WRITE_EXTERNAL_STORAGE permission")
             }
-
         }
-
     }
 
     override fun onRequestPermissionsResult(

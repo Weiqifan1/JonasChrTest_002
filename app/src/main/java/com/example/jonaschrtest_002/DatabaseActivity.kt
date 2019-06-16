@@ -15,7 +15,6 @@ class DatabaseActivity : AppCompatActivity() {
         }
 
 
-
     override fun onResume() {
         super.onResume()
         val dbBookMarks = database.use {

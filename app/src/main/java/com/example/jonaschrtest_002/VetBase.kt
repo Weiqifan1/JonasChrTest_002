@@ -43,7 +43,7 @@ class VetBaseOpenHelper(context: Context = App.instance) :
         db.insert(BookMark.TABLE_NAME2,
             BookMark.ID to 1,
             BookMark.BOOKMARK_NAME to "All Time Low Weightless bookmark 1",
-            BookMark.BOOK_Path to "Current Audio file: /storage/emulated/0/Music/All Time Low - Nothing Personal/01 Weigthless.mp3",
+            BookMark.BOOK_Path to "/storage/emulated/0/Music/All Time Low - Nothing Personal/01 Weigthless.mp3",
             BookMark.FROM_BOOK to "All Time Low Weightless",
             BookMark.BOOKTIME to 9
         )
@@ -76,6 +76,7 @@ class VetBaseOpenHelper(context: Context = App.instance) :
 
         }
 
+
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // Here you can upgrade tables, as usual
         db.dropTable(BookMark.TABLE_NAME2, true)
@@ -83,6 +84,10 @@ class VetBaseOpenHelper(context: Context = App.instance) :
         }
 
     }
+
+
+
+
 
 
 val petParser = rowParser {
@@ -106,10 +111,15 @@ val Context.database: VetBaseOpenHelper
 
 
 val bookMarkParser = rowParser {
+
         id: Int,
         bookMarkName: String,
         bookPath: String,
         fromBook : String,
-        bookTime: Int ->
+        bookTime: Int-> BookMark(id,
+    bookMarkName,
+    bookPath,
+    fromBook,
+    bookTime)
 }
 

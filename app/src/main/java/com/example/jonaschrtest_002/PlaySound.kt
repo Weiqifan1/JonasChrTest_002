@@ -15,6 +15,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Handler
 import android.widget.SeekBar
 import android.widget.Toast
+import org.jetbrains.anko.db.insert
+import org.jetbrains.anko.db.select
+import org.jetbrains.anko.db.update
 
 class PlaySound : AppCompatActivity(){
 
@@ -23,6 +26,9 @@ class PlaySound : AppCompatActivity(){
     private lateinit var player: MediaPlayer
     private lateinit var runnable:Runnable
     private var handler: Handler = Handler()
+    var bookMarkContainer = database.use {
+        select("BookMarks").parseList(bookMarkParser)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +39,39 @@ class PlaySound : AppCompatActivity(){
         val intent = getIntent();
         var myValue = intent.getStringExtra("valor")
         val myValueName = intent.getStringExtra("valorName")
+
+        playSound_addBookmark.setOnClickListener{
+            val pathToOurAudioFile = myValue
+            val currentTime = player.currentPosition
+
+            val EtNytBogmaerke = BookMark(
+                bookMarkContainer.size+1,
+                myValueName + " " + (bookMarkContainer.size+1).toString(),
+                pathToOurAudioFile,
+                "blabla comment",
+                currentTime)
+
+            //vetBaseCopy.insertBookMark(EtNytBogmaerke, database)
+            database.use {
+                insert(BookMark.TABLE_NAME2,
+                    BookMark.ID to EtNytBogmaerke.id,
+                    BookMark.BOOKMARK_NAME to EtNytBogmaerke.bookMarkName,
+                    BookMark.BOOK_Path to EtNytBogmaerke.bookPath,
+                    BookMark.FROM_BOOK to EtNytBogmaerke.fromBook,
+                    BookMark.BOOKTIME to EtNytBogmaerke.bookTime
+                )
+            }
+            /*
+
+                db.insert(BookMark.TABLE_NAME2,
+                    BookMark.ID to 1,
+                    BookMark.BOOKMARK_NAME to "All Time Low Weightless bookmark 1",
+                    BookMark.BOOK_Path to "/storage/emulated/0/Music/All Time Low - Nothing Personal/01 Weigthless.mp3",
+                    BookMark.FROM_BOOK to "All Time Low Weightless",
+                    BookMark.BOOKTIME to 9
+                )
+            */
+        }
 
         // Start the media player
         button_play.setOnClickListener {

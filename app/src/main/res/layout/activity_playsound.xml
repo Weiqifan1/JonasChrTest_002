@@ -78,6 +78,10 @@
             android:text="Title"
             android:layout_width="374dp"
             android:layout_height="wrap_content"/>
+    <Button
+            android:text="addBookmark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/playSound_addBookmark"/>
 </LinearLayout>
 
 

@@ -13,19 +13,19 @@ class EditPetActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_pet)
         val id = intent.extras.getInt("id")
-        val pet = database.use {
-            select(Pet.TABLE_NAME)
+        val bookMark = database.use {
+            select(BookMark.TABLE_NAME2)
                 .whereArgs("id = {id}", "id" to id)
-                .parseSingle(petParser)
+                .parseSingle(bookMarkParser)
             }
-        id_text.text = pet.id.toString()
-        name_edit.setText(pet.name)
+        id_text.text = bookMark.id.toString()
+        name_edit.setText(bookMark.bookMarkName)
 
         update_button.onClick {
             // val id = id_text.text.toString().toInt()
             val name = name_edit.text.toString()
             database.use {
-                update(Pet.TABLE_NAME, Pet.NAME to name)
+                update(BookMark.TABLE_NAME2, BookMark.BOOKMARK_NAME to name)
                     // .whereArgs("id = {id}", Pair("id", id))
                     // .whereSimple("id = ?", id.toString())
                     .whereArgs("id = {id}", "id" to id)

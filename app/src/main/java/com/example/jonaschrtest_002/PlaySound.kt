@@ -49,7 +49,7 @@ class PlaySound : AppCompatActivity(){
                 bookMarkContainer.size+1,
                 myValueName + " " + (bookMarkContainer.size+1).toString(),
                 pathToOurAudioFile,
-                "BookTime: "+currentTime.toString(),
+                "BookTime: "+ (currentTime/1000).toString() + "Seconds",
                 currentTime)
 
             //vetBaseCopy.insertBookMark(EtNytBogmaerke, database)

@@ -8,6 +8,7 @@ import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter
 import com.example.jonaschrtest_002.EditPetActivity.Utils.startNewActivity
 import com.example.jonaschrtest_002.Models.Audio
 import kotlinx.android.synthetic.main.activity_edit_pet.*
+import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.db.update
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -36,6 +37,13 @@ class EditPetActivity : AppCompatActivity() {
                 PlaySound::class.java,
                 ourNewAudio
             )
+        }
+
+        delete_button.onClick {
+            database.use{
+                delete(BookMark.TABLE_NAME2, "id = {bookmarkID}", "bookmarkID" to bookMark.id)
+            }
+            finish()
         }
 
         update_button.onClick {

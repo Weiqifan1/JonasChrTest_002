@@ -10,7 +10,6 @@ open class BookMark(val id: Int, var bookMarkName: String,var bookPath:String, v
         val FROM_BOOK = "fromBook"
         val BOOKTIME = "bookTime"
     }
-
 }
 
 val bookMarks = mutableListOf(
@@ -20,6 +19,5 @@ val bookMarks = mutableListOf(
     BookMark(2, "All Time Low 2",
         "/storage/emulated/0/Music/All Time Low - Nothing Personal/01 Weigthless.mp3",
         "All Time Low",0 )
-
     )
 

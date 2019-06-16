@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter
 import com.example.jonaschrtest_002.EditPetActivity.Utils.startNewActivity
 import com.example.jonaschrtest_002.Models.Audio
 import kotlinx.android.synthetic.main.activity_edit_pet.*

@@ -2,22 +2,15 @@ package com.example.jonaschrtest_002
 
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_playsound.*
-import android.view.MotionEvent
 import android.content.Context
-import android.content.res.AssetFileDescriptor
-import android.media.AudioManager
 import android.net.Uri
-import android.os.Environment
-import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Handler
 import android.widget.SeekBar
 import android.widget.Toast
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
-import org.jetbrains.anko.db.update
 
 class PlaySound : AppCompatActivity() {
 

@@ -3,7 +3,6 @@ package com.example.jonaschrtest_002
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import org.jetbrains.anko.db.*
-import java.lang.IllegalArgumentException
 
 class VetBaseOpenHelper(context: Context = App.instance) :
     ManagedSQLiteOpenHelper(context, "VetBase", null, 2) {

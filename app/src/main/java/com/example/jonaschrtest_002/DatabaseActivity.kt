@@ -3,10 +3,9 @@ package com.example.jonaschrtest_002
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import com.example.jonaschrtest_002.R
 import kotlinx.android.synthetic.main.activity_database.*
 import org.jetbrains.anko.db.select
-import org.jetbrains.anko.toast
+
 
 class DatabaseActivity : AppCompatActivity() {
 

@@ -6,14 +6,10 @@ import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.View
 import android.widget.LinearLayout
-import android.widget.Toast
 import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter
-import com.example.jonaschrtest_002.Adapters.AudioFileListAdapter.Utils.startNewActivity
 import com.example.jonaschrtest_002.Models.Audio
 import kotlinx.android.synthetic.main.activity_audiofilelist.*
-import org.jetbrains.anko.longToast
 
 class AudioFileList : AppCompatActivity() {
 

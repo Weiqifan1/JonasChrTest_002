@@ -13,7 +13,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-    >
+            android:layout_marginTop="50px" android:layout_marginBottom="90px">
         <TextView
                 android:id="@+id/tv_pass"
                 android:layout_width="wrap_content"
@@ -50,12 +50,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Start"
-        />
+                android:background="#4CE753"/>
         <Button
                 android:id="@+id/button_stop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Stop"
+                android:enabled="false"
+                android:background="#F44336"/>
+        <Button
+                android:id="@+id/button_fast_backward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-5sec"
                 android:enabled="false"
         />
         <Button
@@ -65,11 +72,37 @@
                 android:text="+5sec"
                 android:enabled="false"
         />
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentStart="true">
         <Button
-                android:id="@+id/button_fast_backward"
+                android:id="@+id/button_mid_backward"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-5sec"
+                android:text="-30sec"
+        />
+        <Button
+                android:id="@+id/button_mid_forward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+30sec"
+                android:enabled="false"
+        />
+        <Button
+                android:id="@+id/button_slow_backward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-10min"
+                android:enabled="false"
+        />
+        <Button
+                android:id="@+id/button_slow_forward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+10min"
                 android:enabled="false"
         />
     </LinearLayout>

@@ -19,12 +19,11 @@ import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.db.update
 
-class PlaySound : AppCompatActivity(){
-
+class PlaySound : AppCompatActivity() {
 
 
     private lateinit var player: MediaPlayer
-    private lateinit var runnable:Runnable
+    private lateinit var runnable: Runnable
     private var handler: Handler = Handler()
     var bookMarkContainer = database.use {
         select("BookMarks").parseList(bookMarkParser)
@@ -41,20 +40,22 @@ class PlaySound : AppCompatActivity(){
         val myValueName = intent.getStringExtra("valorName")
         val myValorBookMarkTime = intent.getStringExtra("valorBookMarkTime")
 
-        playSound_addBookmark.setOnClickListener{
+        playSound_addBookmark.setOnClickListener {
             val pathToOurAudioFile = myValue
             val currentTime = player.currentPosition
 
             val EtNytBogmaerke = BookMark(
-                bookMarkContainer.size+1,
-                myValueName + " " + (bookMarkContainer.size+1).toString(),
+                bookMarkContainer.size + 1,
+                myValueName + " " + (bookMarkContainer.size + 1).toString(),
                 pathToOurAudioFile,
-                "BookTime: "+ (currentTime/1000).toString() + "Seconds",
-                currentTime)
+                "BookTime: " + (currentTime / 1000).toString() + "Seconds",
+                currentTime
+            )
 
 
             database.use {
-                insert(BookMark.TABLE_NAME2,
+                insert(
+                    BookMark.TABLE_NAME2,
                     BookMark.ID to EtNytBogmaerke.id,
                     BookMark.BOOKMARK_NAME to EtNytBogmaerke.bookMarkName,
                     BookMark.BOOK_Path to EtNytBogmaerke.bookPath,
@@ -84,9 +85,12 @@ class PlaySound : AppCompatActivity(){
                     button_fast_forward.isEnabled = true
                     button_fast_backward.isEnabled = true
                     button_play.isEnabled = true
+                    button_mid_forward.isEnabled = true
+                    button_mid_backward.isEnabled = true
+                    button_slow_forward.isEnabled = true
+                    button_slow_backward.isEnabled = true
 
                 } else {
-
 
 
                     val data = Uri.parse(myValue)
@@ -115,12 +119,20 @@ class PlaySound : AppCompatActivity(){
                     button_fast_forward.isEnabled = true
                     button_fast_backward.isEnabled = true
                     button_play.isEnabled = true
+                    button_mid_forward.isEnabled = true
+                    button_mid_backward.isEnabled = true
+                    button_slow_forward.isEnabled = true
+                    button_slow_backward.isEnabled = true
                 }
+            } else {
+                player.start()
+                button_stop.isEnabled = true
+                button_play.isEnabled = true
             }
         }
         // Stop the media player
-        button_stop.setOnClickListener{
-            if(player.isPlaying){
+        button_stop.setOnClickListener {
+            if (player.isPlaying) {
                 player.pause()
 
                 it.isEnabled = false
@@ -129,23 +141,54 @@ class PlaySound : AppCompatActivity(){
         }
 
         // +5 sec
-        button_fast_forward.setOnClickListener{
-            val currentSec = player.currentSeconds +5
+        button_fast_forward.setOnClickListener {
+            val currentSec = player.currentSeconds + 5
             player.seekTo(currentSec * 1000)
-
         }
+
+        // +30 sec
+        button_mid_forward.setOnClickListener {
+            val currentSec = player.currentSeconds + 30
+            player.seekTo(currentSec * 1000)
+        }
+
+        // +10 min
+        button_slow_forward.setOnClickListener {
+            val currentSec = player.currentSeconds + 600
+            player.seekTo(currentSec * 1000)
+        }
+
         // -5 sec
         button_fast_backward.setOnClickListener {
             val currentSec = player.currentSeconds - 5
-            if (player.currentSeconds <=5){
-                player.seekTo(0 * 1000)
-            }else {
+            if (player.currentSeconds <= 5) {
+                player.seekTo(0)
+            } else {
                 player.seekTo(currentSec * 1000)
             }
-
-
-
         }
+
+        // -30 sec
+        button_mid_backward.setOnClickListener {
+            val currentSec = player.currentSeconds - 30
+            if (player.currentSeconds <= 30) {
+                player.seekTo(0)
+            } else {
+                player.seekTo(currentSec * 1000)
+            }
+        }
+
+        // -10 min
+        button_slow_backward.setOnClickListener {
+            val currentSec = player.currentSeconds - 600
+            if (player.currentSeconds <= 600) {
+                player.seekTo(0)
+            } else {
+                player.seekTo(currentSec * 1000)
+
+            }
+        }
+
         // Seek bar change listener
         seek_bar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {

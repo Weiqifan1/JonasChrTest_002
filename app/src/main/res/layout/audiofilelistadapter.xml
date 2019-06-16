@@ -17,25 +17,25 @@
 
             <TextView
                     android:id="@+id/textViewName"
-                    android:text="Belal Khan"
+                    android:text="felt 1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             <TextView
                     android:id="@+id/textViewAddress"
-                    android:text="Ranchi, India"
+                    android:text="felt 2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             <TextView
                     android:id="@+id/textViewAddress2"
-                    android:text="Ranchi, India"
+                    android:text="felt 3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             <TextView
                     android:id="@+id/textViewAddress3"
-                    android:text="Ranchi, India"
+                    android:text="felt 4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 

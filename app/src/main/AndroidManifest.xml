@@ -30,15 +30,15 @@
                 android:configChanges="orientation|screenSize">
         </activity>
 
-
-
         <activity
                 android:name=".AudioFileList"
                 android:configChanges="orientation|screenSize">
         </activity>
 
-
-
+        <activity
+                android:name=".TimerChr"
+                android:configChanges="orientation|screenSize">
+        </activity>
 
 
         <activity android:name=".EditPetActivity">

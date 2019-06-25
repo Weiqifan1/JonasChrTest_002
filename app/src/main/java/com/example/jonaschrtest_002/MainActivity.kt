@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_playsound.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.startActivity
+import java.util.*
 
 class MainActivity : Activity() {
     private var mediaPlayer: MediaPlayer? = null
@@ -38,6 +39,10 @@ class MainActivity : Activity() {
 
         actmain_recycle.setOnClickListener {
             startActivity(Intent(this, AudioFileList::class.java))
+        }
+
+        actmain_timer.setOnClickListener{
+            startActivity(Intent(this, TimerChr::class.java))
         }
 
 
